@@ -1,0 +1,20 @@
+# Cloudflare Pages redirects.
+# Old Showit and WordPress URLs map here so the existing ranking survives
+# the cutover. Fill in the remaining project rows once the full crawl is done.
+# Format: /old-path  /new-path  301
+
+# Old WordPress artifacts that should never have been public
+/sample-page/            /                                   301
+/author/*                /jennifer-kizzee                    301
+
+# Services
+/our-services            /houston-interior-designer          301
+
+# Duplicate WordPress project posts collapse into their case study
+/2024/08/16/vue-point/   /portfolio/vue-point                301
+/vue-point               /portfolio/vue-point                301
+/2024/01/16/ambrose-kitchen/ /portfolio/ambrose-kitchen      301
+/ambrose-kitchen         /portfolio/ambrose-kitchen          301
+
+# Known broken link on the current site
+/emma-lane-vacation-home /portfolio                          301

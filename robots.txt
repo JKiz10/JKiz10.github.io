@@ -1,0 +1,48 @@
+# Jennifer Kizzee Design
+# Every legitimate search and AI crawler is welcome. Do not add blanket
+# disallows here without checking Priority 7 of the search work list.
+
+User-agent: *
+Allow: /
+
+# Named explicitly so the intent is unambiguous to auditors and to us.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://jenniferkizzee.com/sitemap.xml
