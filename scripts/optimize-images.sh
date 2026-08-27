@@ -3,7 +3,16 @@
 # Needs cwebp: brew install webp
 set -uo pipefail
 SRC="${1:-assets/img/projects}"
-command -v cwebp >/dev/null || { echo "cwebp not found. Run: brew install webp"; exit 1; }
+if ! command -v cwebp >/dev/null; then
+  echo "cwebp not found, so no WebP can be written."
+  echo ""
+  echo "  brew install webp"
+  echo ""
+  echo "There is no fallback on this machine. sips cannot write WebP and the"
+  echo "local Pillow was built without WebP support. Both were checked."
+  echo "The site works without it, JPEG is the only source in every <picture>."
+  exit 1
+fi
 count=0
 while IFS= read -r -d '' f; do
   out="${f%.*}.webp"
