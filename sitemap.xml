@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Every public page belongs in here. The old site's sitemap omitted every
      marketing page and all 32 project pages, which is most of why nothing
-     was indexed. Add a row the moment a page goes live. -->
+     was indexed. Regenerated from the filesystem, so it cannot drift. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://jenniferkizzee.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://jenniferkizzee.com/areas-we-serve</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jenniferkizzee.com/areas/friendswood</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/areas/galveston</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/areas/houston</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/areas/league-city</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/careers</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jenniferkizzee.com/contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://jenniferkizzee.com/houston-interior-designer</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jenniferkizzee.com/recognition</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jenniferkizzee.com/recognition/awards</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/recognition/press</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/jennifer-kizzee</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://jenniferkizzee.com/team</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/houston-interior-designer/kitchen-and-bath</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/houston-interior-designer/new-construction</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/houston-interior-designer/whole-home-renovation</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/jennifer-kizzee</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jenniferkizzee.com/portfolio</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/vue-point</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/rockpoint-project</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/gateway-condo</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/starfish-vacation-home</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/emma-lane-guest-house</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jenniferkizzee.com/portfolio/crystal-beach-vacation-home</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/knoll-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/pinewold-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/jenn-s-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/takoma-park-md</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/mountain-falls-primary-bath</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://jenniferkizzee.com/portfolio/sunstream-bath</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/emma-lane-guest-house</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jenniferkizzee.com/portfolio/evergreen-suite-bathroom</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jenniferkizzee.com/portfolio/evergreen-suite-bedroom</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/gateway-condo</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/jenn-s-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/knoll-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/mountain-falls-primary-bath</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/pinewold-kitchen</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/rockpoint-project</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jenniferkizzee.com/portfolio/silver-moon-project</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/starfish-vacation-home</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/sunstream-bath</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/takoma-park-md</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/portfolio/vue-point</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/process</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jenniferkizzee.com/recognition</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jenniferkizzee.com/recognition/awards</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/recognition/press</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jenniferkizzee.com/team</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://jenniferkizzee.com/testimonials</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
