@@ -37,8 +37,21 @@
     if (href.indexOf('tel:') === 0) event = 'phone_click';
     else if (href.indexOf('mailto:') === 0) event = 'email_click';
     else if (a.dataset.cta) event = 'cta_click';
-    if (event && typeof window.jkdTrack === 'function') {
-      window.jkdTrack(event, { href: href, label: a.dataset.cta || a.textContent.trim() });
+    if (!event) return;
+    var payload = { href: href, label: a.dataset.cta || a.textContent.trim() };
+
+    // Custom hook first, if a page defines one.
+    if (typeof window.jkdTrack === 'function') window.jkdTrack(event, payload);
+
+    // Then whichever analytics provider is actually installed. Nothing is
+    // installed yet, so these are no-ops until a GA4 or GTM snippet is added
+    // to the page head. That is deliberate: the capture code should be in
+    // place before the tag is, not after.
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', event, { link_url: payload.href, link_label: payload.label });
+    }
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({ event: event, link_url: payload.href, link_label: payload.label });
     }
   });
 })();

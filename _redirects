@@ -62,6 +62,39 @@
 # --- Duplicate WordPress project posts ---------------------------------------
 # 33 thin duplicates live at dated permalinks and, unlike the real pages, they
 # ARE in the old sitemap. Collapse them.
+# --- Gaps found in the 2026-08-27 technical audit -----------------------------
+# Specific rules MUST sit above the wildcards, Cloudflare matches in file order.
+
+# The WordPress dated permalinks are the URLs actually in the old Yoang sitemap,
+# so these are what Google has indexed. Five of them are projects we rebuilt, and
+# they were falling through the /2024/* wildcard to the hub instead of the page
+# they are actually about.
+/2024/01/16/emma-ln-guest-house/     /portfolio/emma-lane-guest-house         301
+/2024/01/16/crystal-beach-house/     /portfolio/crystal-beach-vacation-home   301
+/2024/01/16/friends-knoll-kitchen/   /portfolio/knoll-kitchen                 301
+/2024/01/16/jenns-kitchen/           /portfolio/jenn-s-kitchen                301
+/2024/01/16/evergreen-bathroom/      /portfolio/evergreen-suite-bathroom      301
+/2024/01/16/vue-point/               /portfolio/vue-point                     301
+/2024/01/16/rockpoint-project/       /portfolio/rockpoint-project             301
+/2024/01/16/starfish-vacation-home/  /portfolio/starfish-vacation-home        301
+/2024/01/16/pinewold-kitchen/        /portfolio/pinewold-kitchen              301
+/2024/01/16/sunstream-bath/          /portfolio/sunstream-bath                301
+/2024/01/16/silver-moon-project/     /portfolio/silver-moon-project           301
+/2024/01/16/mountain-falls-primary-bath/ /portfolio/mountain-falls-primary-bath 301
+/2024/01/16/evergreen-suite-bedroom/ /portfolio/evergreen-suite-bedroom       301
+
+# There was no /2025/* wildcard at all. Three 2025-dated posts are live 200s on
+# the old site today and would have hard 404ed on cutover.
+/2025/01/16/markee-oaks/             /portfolio                               301
+/2025/01/29/gentlemens-retreat/      /portfolio                               301
+/2025/03/20/alexandria-project/      /portfolio                               301
+/2025/*                              /portfolio                               301
+
+# Two real pages with zero coverage.
+/blog                                /                                        301
+/blog/                               /                                        301
+/blog/page/*                         /                                        301
+
 /2024/*                  /portfolio                          301
 /2023/*                  /portfolio                          301
 /category/kitchens       /portfolio#kitchens                 301
