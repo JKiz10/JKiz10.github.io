@@ -2,3 +2,14 @@
 node_modules/
 *.log
 .env
+
+# Raw photo pull from the live Showit site. scripts/fetch-images.sh drops the
+# full 2400px library into per-project subfolders. That is a working archive,
+# roughly 350MB, and it does not belong in the deploy.
+# Curated, renamed, web-sized files live at the TOP level of
+# assets/img/projects/ and ARE committed, because the site references them.
+assets/img/projects/*/
+
+# Old broken .git directory, left in place for you to inspect and delete.
+# Ignored so it can never be committed by accident.
+_git-broken-DELETE-ME/

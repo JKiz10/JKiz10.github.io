@@ -358,6 +358,53 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .social{display:flex;flex-wrap:wrap;gap:var(--gap-sm);margin-top:var(--gap-sm)}
 .social a{font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase}
 
+/* ------------------------------------------------------- recognition --- */
+/* Awards and press are presented as dated, linked text. Never a logo wall.
+   Reuses the .awards / .award row from above and adds the outlet line and
+   the hub cards. Gold stays a hairline accent only. BOS 2.1 */
+.award__source{display:block;font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink-muted);margin:0 0 6px}
+.award__cite{display:block;margin-top:9px;font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--jkd-steel-blue)}
+.award__cite a{border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .2s,color .2s}
+.award__cite a:hover{color:var(--jkd-gold);border-bottom-color:var(--jkd-gold)}
+.award--pending .award__year{color:var(--ink-muted);font-family:var(--sans);font-size:var(--t-label);
+  letter-spacing:var(--track-mid);text-transform:uppercase;padding-top:.5em}
+
+.recog-card{display:block;border-top:1px solid var(--rule);padding-top:var(--gap-md)}
+.recog-card h3{font-family:var(--display);text-transform:uppercase;font-size:var(--t-title);
+  letter-spacing:.09em;font-weight:300;margin:6px 0 10px;transition:color .2s}
+.recog-card:hover h3{color:var(--jkd-steel-blue)}
+.recog-card p{font-size:var(--t-small);color:var(--ink-soft);margin:0 0 14px}
+.recog-card__count{font-family:var(--display);font-size:1.9rem;font-weight:300;
+  line-height:1;color:var(--jkd-steel-blue)}
+
+/* Year-grouped award blocks on the awards page */
+.award-year{border-top:1px solid var(--rule);padding:var(--gap-md) 0}
+.award-year:last-child{border-bottom:1px solid var(--rule)}
+.award-year__head{display:flex;align-items:baseline;gap:var(--gap-sm);margin-bottom:var(--gap-sm)}
+.award-year__num{font-family:var(--display);font-size:1.9rem;font-weight:300;line-height:1;
+  color:var(--jkd-steel-blue);letter-spacing:.02em}
+.award-year__tag{font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink-muted)}
+.award-year ul{list-style:none;padding:0;margin:0}
+.award-year li{position:relative;padding-left:20px;margin-bottom:12px;font-size:var(--t-small);
+  color:var(--ink-soft);line-height:1.66}
+.award-year li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;
+  background:var(--jkd-gold);transform:rotate(45deg)}
+.award-year li b{font-weight:400;color:var(--ink)}
+
+/* ------------------------------------------------------------- people --- */
+/* Team card. Photo is a clean vertical rectangle with the text below it,
+   sharp corners, no frame, no shadow, no radius. BOS 1.5, 4.6 */
+.person__media{margin-bottom:var(--gap-sm);background:var(--jkd-linen);overflow:hidden}
+.person__media img,.person__media .photo-slot{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+.person__role{font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase;
+  color:var(--ink-muted);margin:0 0 6px}
+.person__name{font-family:var(--display);text-transform:uppercase;font-size:var(--t-title);
+  letter-spacing:.09em;font-weight:300;margin:0 0 10px;color:var(--ink)}
+.person__bio{font-size:var(--t-small);color:var(--ink-soft);margin:0;line-height:1.66;max-width:none}
+
 /* ------------------------------------------------------------ utility --- */
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
