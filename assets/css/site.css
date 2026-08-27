@@ -125,7 +125,7 @@ h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
   color:var(--jkd-stone);margin:0 0 var(--gap-sm);
 }
 .eyebrow--gold{color:var(--jkd-gold)}
-.eyebrow--light{color:rgba(255,255,255,.72)}
+.eyebrow--light{color:rgba(255,255,255,.82)}
 
 p{margin:0 0 1.15em;max-width:var(--measure)}
 .lede{font-size:1.16rem;font-weight:300;line-height:1.72;color:var(--ink-soft)}
@@ -464,6 +464,90 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .proj-nav a:hover{color:var(--jkd-steel-blue)}
 .proj-nav>:last-child{text-align:right}
 @media (max-width:560px){.proj-nav{grid-template-columns:1fr}.proj-nav>:last-child{text-align:left}}
+
+/* ========================================================== stagecraft ===
+   Luxury here is scale, restraint and slow motion. The Brand OS forbids
+   shadows, gradients, colour washes and large gold fills, so none of that is
+   available and none of it is needed. What carries the feeling instead:
+   generous negative space, a wider type scale, hairline gold, full-bleed
+   photography that is never cropped into a strip, and motion slow enough that
+   you notice the room rather than the transition.
+   Every animated property here is transform or opacity. Nothing touches layout.
+   ====================================================================== */
+
+/* ------------------------------------------------ rotating hero stage --- */
+.stage{position:relative;min-height:clamp(560px,92vh,940px);display:grid;isolation:isolate;overflow:hidden}
+.stage__slides{position:absolute;inset:0}
+.stage__slide{position:absolute;inset:0;opacity:0;transition:opacity 1800ms cubic-bezier(.4,0,.2,1)}
+.stage__slide[data-active="true"]{opacity:1}
+.stage__slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.0);
+  transition:transform 9500ms linear}
+/* A very slow drift. Transform only, so it never costs a layout pass. It is
+   the one motion that makes a still photograph feel like a held shot. */
+.stage__slide[data-active="true"] img{transform:scale(1.055)}
+/* Neutral darkening only, and only because type sits here. BOS 1.7 */
+.stage__scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(37,37,37,.20) 0%,rgba(37,37,37,.10) 34%,rgba(37,37,37,.52) 72%,rgba(37,37,37,.78) 100%)}
+.stage__body{position:relative;z-index:2;align-self:end;width:100%;padding:0 0 clamp(56px,9vh,110px)}
+.stage__body .display{color:#fff}
+.stage__body .lede{color:rgba(255,255,255,.88);max-width:44ch;font-size:1.06rem}
+
+/* Slide attribution. Small, quiet, bottom right. */
+.stage__credit{position:absolute;right:clamp(20px,5vw,56px);bottom:clamp(28px,4.5vh,52px);z-index:3;
+  text-align:right;font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase;
+  color:rgba(255,255,255,.62);max-width:16ch;line-height:1.7}
+.stage__credit b{display:block;font-weight:400;color:rgba(255,255,255,.92)}
+@media (max-width:700px){.stage__credit{display:none}}
+
+/* Progress: hairline gold, the only gold on the screen. Never a fill. */
+.stage__ticks{position:absolute;left:clamp(20px,5vw,56px);bottom:clamp(28px,4.5vh,52px);z-index:3;
+  display:flex;gap:10px}
+.stage__tick{width:34px;height:1px;background:rgba(255,255,255,.30);border:0;padding:0;cursor:pointer;
+  position:relative;overflow:hidden;transition:background .4s}
+.stage__tick::after{content:"";position:absolute;inset:0;background:var(--jkd-gold);
+  transform:scaleX(0);transform-origin:left}
+.stage__tick[aria-current="true"]::after{transform:scaleX(1);transition:transform 7000ms linear}
+.stage__tick:hover{background:rgba(255,255,255,.55)}
+
+@media (prefers-reduced-motion:reduce){
+  .stage__slide{transition:none}
+  .stage__slide img{transition:none;transform:none}
+  .stage__slide[data-active="true"] img{transform:none}
+  .stage__tick::after{transition:none}
+}
+
+/* ------------------------------------------------------ scroll reveal --- */
+/* Opacity and transform only. Content is visible by default and the class is
+   added by JS, so anything without JS or with reduced motion sees it all. */
+.reveal{opacity:0;transform:translateY(18px);
+  transition:opacity 1100ms cubic-bezier(.22,1,.36,1),transform 1100ms cubic-bezier(.22,1,.36,1)}
+.reveal[data-seen="true"]{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* ------------------------------------------------------ editorial band --- */
+/* Full-bleed photograph with the story set beside it. Not a banner strip:
+   the image keeps a tall aspect and the type sits in its own column. BOS 4.6 */
+.editorial{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
+.editorial__media{position:relative;min-height:clamp(420px,64vh,760px)}
+.editorial__media img{width:100%;height:100%;object-fit:cover}
+.editorial__body{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,6vw,88px) clamp(24px,5vw,72px)}
+.editorial__body .display{margin-bottom:var(--gap-sm)}
+@media (max-width:880px){
+  .editorial{grid-template-columns:1fr}
+  .editorial__media{min-height:clamp(300px,52vh,480px)}
+}
+
+/* Oversized editorial numeral. Deep Gray at low opacity, never gold. */
+.figure-mark{font-family:var(--display);font-size:clamp(3.4rem,7vw,6rem);line-height:.9;
+  font-weight:300;color:var(--jkd-steel-blue);opacity:.22;display:block;margin-bottom:-.18em}
+
+/* ------------------------------------------------------- wider scale --- */
+.display--stage{font-size:clamp(1.9rem,3.5vw,3.1rem);line-height:1.12;letter-spacing:.03em;max-width:26ch}
+.eyebrow--spaced{letter-spacing:var(--track-xwide)}
+.band--airy{padding:clamp(6rem,13vh,11rem) 0}
 
 /* ------------------------------------------------------------ utility --- */
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;

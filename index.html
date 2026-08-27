@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;family=Inter:wght@200;300;400;500&amp;display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v=4">
 <link rel="icon" href="/assets/brand/jennifer-kizzee-monogram-gold.svg" type="image/svg+xml">
 
 <script type="application/ld+json">
@@ -259,29 +259,53 @@
 
 <main id="main">
 
-  <!-- HERO -------------------------------------------------------------- -->
-  <section class="hero">
-    <div class="hero__media">
-      <img srcset="/assets/img/projects/vue-point-living-room-fireplace-hero-800.jpg 800w, /assets/img/projects/vue-point-living-room-fireplace-hero-1400.jpg 1400w, /assets/img/projects/vue-point-living-room-fireplace-hero.jpg 2000w" sizes="100vw" src="/assets/img/projects/vue-point-living-room-fireplace-hero.jpg"
-           alt="Living room with a floor to ceiling charcoal grid-tile fireplace wall in the Vue Point whole-home renovation by Jennifer Kizzee Design in The Woodlands, Texas"
-           width="2000" height="1333" fetchpriority="high" decoding="async">
+  <!-- STAGE ------------------------------------------------------------- -->
+  <section class="stage" aria-label="Selected Jennifer Kizzee Design projects">
+    <div class="stage__slides">
+        <div class="stage__slide" data-project="Vue Point" data-note="Cambria Style cover, Spring 2025">
+          <img srcset="/assets/img/projects/vue-point-bedroom-canopy-hero-800.jpg 800w, /assets/img/projects/vue-point-bedroom-canopy-hero-1400.jpg 1400w, /assets/img/projects/vue-point-bedroom-canopy-hero.jpg 2000w" sizes="100vw" src="/assets/img/projects/vue-point-bedroom-canopy-hero.jpg" alt="Bedroom with a black steel canopy bed and twin white glass bedside pendants in the Vue Point whole-home renovation by Jennifer Kizzee Design in The Woodlands, Texas" width="2000" height="1333" fetchpriority="high" decoding="async">
+        </div>
+        <div class="stage__slide" data-project="Gateway Condo" data-note="The Woodlands">
+          <img data-srcset="/assets/img/projects/gateway-condo-primary-bedroom-hero-800.jpg 800w, /assets/img/projects/gateway-condo-primary-bedroom-hero-1400.jpg 1400w, /assets/img/projects/gateway-condo-primary-bedroom-hero.jpg 2000w" sizes="100vw" data-src="/assets/img/projects/gateway-condo-primary-bedroom-hero.jpg" alt="Primary bedroom with dark teal paneled walls around a black and gilt four-poster bed in the Gateway Condo project by Jennifer Kizzee Design in The Woodlands, Texas" width="2000" height="1333" loading="lazy" decoding="async">
+        </div>
+        <div class="stage__slide" data-project="Rockpoint" data-note="League City">
+          <img data-srcset="/assets/img/projects/rockpoint-primary-bathroom-hero-800.jpg 800w, /assets/img/projects/rockpoint-primary-bathroom-hero-1400.jpg 1400w, /assets/img/projects/rockpoint-primary-bathroom-hero.jpg 2000w" sizes="100vw" data-src="/assets/img/projects/rockpoint-primary-bathroom-hero.jpg" alt="Primary bathroom with a navy grasscloth vanity wall and Moroccan lantern pendants in the Rockpoint project by Jennifer Kizzee Design in League City, Texas" width="2000" height="1333" loading="lazy" decoding="async">
+        </div>
+        <div class="stage__slide" data-project="Knoll Kitchen" data-note="Friendswood">
+          <img data-srcset="/assets/img/projects/knoll-kitchen-plaster-hood-hero-800.jpg 800w, /assets/img/projects/knoll-kitchen-plaster-hood-hero-1400.jpg 1400w, /assets/img/projects/knoll-kitchen-plaster-hood-hero.jpg 2000w" sizes="100vw" data-src="/assets/img/projects/knoll-kitchen-plaster-hood-hero.jpg" alt="Kitchen island under woven brass drum pendants with a plaster range hood and marble slab backsplash in the Knoll Kitchen project by Jennifer Kizzee Design in Friendswood, Texas" width="2000" height="1333" loading="lazy" decoding="async">
+        </div>
+        <div class="stage__slide" data-project="Evergreen Suite" data-note="Houston">
+          <img data-srcset="/assets/img/projects/evergreen-bedroom-navy-grid-wall-hero-800.jpg 800w, /assets/img/projects/evergreen-bedroom-navy-grid-wall-hero-1400.jpg 1400w, /assets/img/projects/evergreen-bedroom-navy-grid-wall-hero.jpg 2000w" sizes="100vw" data-src="/assets/img/projects/evergreen-bedroom-navy-grid-wall-hero.jpg" alt="Upholstered bed against a floor to ceiling navy grid panel wall in the Evergreen Suite Bedroom project by Jennifer Kizzee Design in Houston, Texas" width="2000" height="1333" loading="lazy" decoding="async">
+        </div>
+        <div class="stage__slide" data-project="Starfish" data-note="Galveston">
+          <img data-srcset="/assets/img/projects/starfish-covered-porch-hero-800.jpg 800w, /assets/img/projects/starfish-covered-porch-hero-1400.jpg 1400w, /assets/img/projects/starfish-covered-porch-hero.jpg 2000w" sizes="100vw" data-src="/assets/img/projects/starfish-covered-porch-hero.jpg" alt="Covered porch with rope lounge chairs under an exposed wood ceiling in the Starfish Vacation Home project by Jennifer Kizzee Design in Galveston, Texas" width="2000" height="1333" loading="lazy" decoding="async">
+        </div>
     </div>
-    <div class="hero__scrim"></div>
-    <div class="hero__body">
-      <div class="wrap wrap--narrow">
-        <p class="eyebrow eyebrow--light">Houston &amp; Greater Houston</p>
-        <h1 class="display display--hero">Award-Winning Houston Interior Design for Renovations and New Construction</h1>
+    <div class="stage__scrim"></div>
+    <div class="stage__body">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--light eyebrow--spaced">Houston &amp; Greater Houston &middot; Since 2016</p>
+        <h1 class="display display--stage">Award-Winning Houston Interior Design for Renovations and New Construction</h1>
         <p class="lede mt-md">We are a full-service residential interior design firm. We take on whole-home renovations and custom builds across Houston and the communities around it, and we stay on the project from first drawing to install day.</p>
-        <div class="hero__actions">
-          <a class="btn btn--light" href="/contact" data-cta="hero-primary">Book a Consult</a>
-          <a class="btn btn--light" href="/portfolio" data-cta="hero-secondary">See the Work</a>
+        <div class="hero__actions" style="justify-content:flex-start">
+          <a class="btn btn--light" href="/portfolio" data-cta="stage-primary">See the Work</a>
+          <a class="btn btn--light" href="/contact" data-cta="stage-secondary">Book a Consult</a>
         </div>
       </div>
     </div>
+    <div class="stage__ticks" role="group" aria-label="Choose a project">
+        <button class="stage__tick" type="button" aria-label="Show Vue Point"></button>
+        <button class="stage__tick" type="button" aria-label="Show Gateway Condo"></button>
+        <button class="stage__tick" type="button" aria-label="Show Rockpoint"></button>
+        <button class="stage__tick" type="button" aria-label="Show Knoll Kitchen"></button>
+        <button class="stage__tick" type="button" aria-label="Show Evergreen Suite"></button>
+        <button class="stage__tick" type="button" aria-label="Show Starfish"></button>
+    </div>
+    <p class="stage__credit" aria-live="off"></p>
   </section>
 
   <!-- AUTHORITY --------------------------------------------------------- -->
-  <section class="band band--tight band--linen" aria-labelledby="authority-heading">
+  <section class="band band--tight band--linen" aria-labelledby="authority-heading" data-reveal>
     <h2 id="authority-heading" class="visually-hidden">Recognition and experience</h2>
     <div class="wrap">
       <div class="authority">
@@ -309,13 +333,36 @@
   </section>
 
   <!-- POSITIONING ------------------------------------------------------- -->
-  <section class="band band--white center" aria-labelledby="positioning-heading">
+  <section class="band band--white center" aria-labelledby="positioning-heading" data-reveal>
     <div class="wrap wrap--narrow">
       <p class="eyebrow">Full-service residential design</p>
       <h2 id="positioning-heading" class="display display--lg">Transforming spaces through creative expertise and functional design</h2>
       <div class="rule-diamond"><i></i></div>
       <p class="lede">Most of our work is large in scope. A kitchen and primary suite taken back to the studs. A whole home reworked room by room. A new build where we sit at the table with the builder before the slab is poured. We handle the drawings, the selections, the bidding, the procurement and the install, so you make decisions instead of phone calls.</p>
       <p><a class="link-underline" href="/houston-interior-designer" data-cta="positioning">What full service looks like</a></p>
+    </div>
+  </section>
+
+  <!-- COVER STORY --------------------------------------------------------- -->
+  <section class="editorial" aria-labelledby="cover-heading" data-reveal>
+    <div class="editorial__media">
+      <img src="/assets/img/projects/vue-point-kitchen-waterfall-islands.jpg"
+           srcset="/assets/img/projects/vue-point-kitchen-waterfall-islands.jpg 1400w"
+           sizes="(max-width:880px) 100vw, 58vw"
+           alt="Kitchen with twin white quartz waterfall islands under paired black slat drum pendants in the Vue Point project by Jennifer Kizzee Design in The Woodlands, Texas"
+           width="1400" height="933" loading="lazy" decoding="async">
+    </div>
+    <div class="editorial__body band--linen">
+      <p class="eyebrow eyebrow--spaced">Cambria Style &middot; Spring 2025</p>
+      <h2 id="cover-heading" class="display display--lg">The cover story</h2>
+      <div class="rule-diamond" style="margin-left:0;justify-content:flex-start"><i></i></div>
+      <p>Cambria publishes its own magazine for its quartz surfaces, and one project takes the cover each season. Spring 2025 went to Vue Point, a full renovation of a three-story condo we worked up against a prewar New York penthouse reference.</p>
+      <p>Twin waterfall islands, a charcoal grid-tile fireplace wall running floor to ceiling, and a marble backsplash inlaid with brass ovals. Three levels, reworked room by room.</p>
+      <p class="mt-md">
+        <a class="link-underline" href="/portfolio/vue-point" data-cta="cover-project">See the project</a>
+        &nbsp;&nbsp;
+        <a class="link-underline" href="/recognition/press" data-cta="cover-press">All press</a>
+      </p>
     </div>
   </section>
 
@@ -334,7 +381,7 @@
   </div>
 
   <!-- FEATURED WORK ------------------------------------------------------ -->
-  <section class="band band--linen" aria-labelledby="work-heading">
+  <section class="band band--linen" aria-labelledby="work-heading" data-reveal>
     <div class="wrap">
       <div class="center">
         <p class="eyebrow">Selected Houston projects</p>
@@ -377,7 +424,7 @@
   </section>
 
   <!-- JENNIFER ----------------------------------------------------------- -->
-  <section class="band band--white" aria-labelledby="jennifer-heading">
+  <section class="band band--white" aria-labelledby="jennifer-heading" data-reveal>
     <div class="wrap">
       <div class="feature">
         <div class="feature__media">
@@ -400,7 +447,7 @@
   </section>
 
   <!-- TESTIMONIAL -------------------------------------------------------- -->
-  <section class="band band--blue" aria-labelledby="quote-heading">
+  <section class="band band--blue" aria-labelledby="quote-heading" data-reveal>
     <div class="wrap">
       <h2 id="quote-heading" class="visually-hidden">What clients say</h2>
       <figure class="quote">
@@ -415,7 +462,7 @@
   </section>
 
   <!-- SERVICE AREA ------------------------------------------------------- -->
-  <section class="band band--linen center" aria-labelledby="area-heading">
+  <section class="band band--linen center" aria-labelledby="area-heading" data-reveal>
     <div class="wrap">
       <p class="eyebrow">Where we work</p>
       <h2 id="area-heading" class="display display--md">Houston and the communities around it</h2>
@@ -436,7 +483,7 @@
   </section>
 
   <!-- CTA ---------------------------------------------------------------- -->
-  <section class="band band--dark center" aria-labelledby="cta-heading">
+  <section class="band band--dark center" aria-labelledby="cta-heading" data-reveal>
     <div class="wrap wrap--narrow">
       <p class="eyebrow eyebrow--light">Start here</p>
       <h2 id="cta-heading" class="display display--lg">Tell us about your project</h2>
@@ -507,6 +554,6 @@
   </div>
 </footer>
 
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=4" defer></script>
 </body>
 </html>
