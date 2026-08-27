@@ -41,7 +41,7 @@ PAGES=(
   sunstream-bath jenn-s-kitchen marrelli-project mountain-falls-primary-bath
   evergreen-suite-bedroom fox-run-modern-kitchen knoll-kitchen
   crystal-beach-vacation-home emma-lane-guest-house evergreen-suite-bathroom
-  branstetter-kitchen ambrose-kitchen
+  branstetter-kitchen ambrose-kitchen blue-heron-bathroom
 )
 
 total=0

@@ -1,20 +1,74 @@
 # Cloudflare Pages redirects.
-# Old Showit and WordPress URLs map here so the existing ranking survives
-# the cutover. Fill in the remaining project rows once the full crawl is done.
-# Format: /old-path  /new-path  301
+# The old Showit site is FLAT (/vue-point). The new one is NESTED
+# (/portfolio/vue-point). Every old project URL needs a 301 or the cutover
+# drops 32 indexed pages. The current site ranks second for
+# "Houston interior designer for renovations" and that is what this protects.
+#
+# Built from a real crawl of jenniferkizzee.com on 2026-08-27, which found 32
+# project pages, none of which were in the old sitemap.
 
-# Old WordPress artifacts that should never have been public
+# --- Marketing pages ---------------------------------------------------------
+/our-services            /houston-interior-designer          301
+/press                   /recognition/press                  301
+/meet-the-team           /team                               301
+/home                    /                                   301
+
+# --- WordPress artefacts that should never have been public ------------------
+/sample-page             /                                   301
 /sample-page/            /                                   301
 /author/*                /jennifer-kizzee                    301
 
-# Services
-/our-services            /houston-interior-designer          301
+# --- The 15 rebuilt projects, one to one -------------------------------------
+/vue-point                     /portfolio/vue-point                     301
+/rockpoint-project             /portfolio/rockpoint-project             301
+/gateway-condo                 /portfolio/gateway-condo                 301
+/starfish-vacation-home        /portfolio/starfish-vacation-home        301
+/emma-lane-guest-house         /portfolio/emma-lane-guest-house         301
+/crystal-beach-vacation-home   /portfolio/crystal-beach-vacation-home   301
+/knoll-kitchen                 /portfolio/knoll-kitchen                 301
+/pinewold-kitchen              /portfolio/pinewold-kitchen              301
+/jenn-s-kitchen                /portfolio/jenn-s-kitchen                301
+/takoma-park-md                /portfolio/takoma-park-md                301
+/mountain-falls-primary-bath   /portfolio/mountain-falls-primary-bath   301
+/sunstream-bath                /portfolio/sunstream-bath                301
+/evergreen-suite-bathroom      /portfolio/evergreen-suite-bathroom      301
+/evergreen-suite-bedroom       /portfolio/evergreen-suite-bedroom       301
+/silver-moon-project           /portfolio/silver-moon-project           301
 
-# Duplicate WordPress project posts collapse into their case study
-/2024/08/16/vue-point/   /portfolio/vue-point                301
-/vue-point               /portfolio/vue-point                301
-/2024/01/16/ambrose-kitchen/ /portfolio/ambrose-kitchen      301
-/ambrose-kitchen         /portfolio/ambrose-kitchen          301
+# --- The 17 old projects NOT rebuilt -----------------------------------------
+# These are real indexed pages today. Sending them to /portfolio keeps the link
+# equity and gives the visitor somewhere useful, rather than a 404.
+# Four are unusable at any resolution (pine-lodge and longwood cap at 750px,
+# holcombe-condo at 1024px, gentleman-s-retreat has 7 photos).
+# blue-heron-bathroom IS worth rebuilding, its photography is good. Next pass.
+/blue-heron-bathroom     /portfolio                          301
+/pebble-brook            /portfolio                          301
+/collective-washroom     /portfolio                          301
+/holcombe-condo          /portfolio                          301
+/longwood                /portfolio                          301
+/pine-lodge              /portfolio                          301
+/markee-oaks             /portfolio                          301
+/alexandria              /portfolio                          301
+/gentleman-s-retreat     /portfolio                          301
+/crescent-bath           /portfolio#bathrooms                301
+/fox-run-modern-bath     /portfolio#bathrooms                301
+/fox-run-modern-kitchen  /portfolio#kitchens                 301
+/heights-primary-bath    /portfolio#bathrooms                301
+/branstetter-kitchen     /portfolio#kitchens                 301
+/ambrose-kitchen         /portfolio#kitchens                 301
+/marrelli-project        /portfolio                          301
+/pool-envy-commercial    /portfolio                          301
 
-# Known broken link on the current site
-/emma-lane-vacation-home /portfolio                          301
+# --- Duplicate WordPress project posts ---------------------------------------
+# 33 thin duplicates live at dated permalinks and, unlike the real pages, they
+# ARE in the old sitemap. Collapse them.
+/2024/*                  /portfolio                          301
+/2023/*                  /portfolio                          301
+/category/kitchens       /portfolio#kitchens                 301
+/category/bathrooms      /portfolio#bathrooms                301
+/category/bedrooms       /portfolio#bedrooms                 301
+/category/vacation-homes /portfolio#vacation-homes           301
+/category/*              /portfolio                          301
+
+# --- Known broken link on the current site -----------------------------------
+/emma-lane-vacation-home /portfolio/emma-lane-guest-house    301

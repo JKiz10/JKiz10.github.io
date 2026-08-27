@@ -21,7 +21,10 @@
    @font-face block and drop ModnyLight.woff2 into /assets/fonts/.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@200;300;400;500&display=swap');
+/* Fonts are linked from each page's <head>, not imported here.
+   An @import inside CSS serialises the request chain: HTML, then site.css,
+   then the font CSS, then the font files. Linking in the head lets the
+   preload scanner start the font CSS at the same time as this file. */
 
 /*
 @font-face {
