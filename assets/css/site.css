@@ -480,11 +480,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .stage__slides{position:absolute;inset:0}
 .stage__slide{position:absolute;inset:0;opacity:0;transition:opacity 1800ms cubic-bezier(.4,0,.2,1)}
 .stage__slide[data-active="true"]{opacity:1}
+/* Frames 2+ stay out of layout until site.js arms the stage. Their images are
+   loading="lazy", so nothing is fetched for them during page load. Frame 1 is
+   active in the HTML, so without JS the stage is a still photograph. */
+.stage:not([data-armed="true"]) .stage__slide:not(:first-child){display:none}
 .stage__slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.0);
   transition:transform 9500ms linear}
 /* A very slow drift. Transform only, so it never costs a layout pass. It is
-   the one motion that makes a still photograph feel like a held shot. */
-.stage__slide[data-active="true"] img{transform:scale(1.055)}
+   the one motion that makes a still photograph feel like a held shot. It waits
+   for the stage to arm, so the first frame paints still and then begins. */
+.stage[data-armed="true"] .stage__slide[data-active="true"] img{transform:scale(1.055)}
 /* Neutral darkening only, and only because type sits here. BOS 1.7 */
 .stage__scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(to bottom,rgba(37,37,37,.20) 0%,rgba(37,37,37,.10) 34%,rgba(37,37,37,.52) 72%,rgba(37,37,37,.78) 100%)}
@@ -506,14 +511,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   position:relative;overflow:hidden;transition:background .4s}
 .stage__tick::after{content:"";position:absolute;inset:0;background:var(--jkd-gold);
   transform:scaleX(0);transform-origin:left}
-.stage__tick[aria-current="true"]::after{transform:scaleX(1);transition:transform 7000ms linear}
+/* Which frame is showing. Static by default, so it reads without JS. */
+.stage__tick[aria-current="true"]::after{transform:scaleX(1)}
+/* While rotating, the hairline fills across the hold. An animation, not a
+   transition, so it also runs for frame 1, which is current before JS arrives.
+   7000ms matches HOLD in site.js. */
+.stage[data-armed="true"] .stage__tick[aria-current="true"]::after{animation:stage-hold 7000ms linear both}
+@keyframes stage-hold{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .stage__tick:hover{background:rgba(255,255,255,.55)}
 
 @media (prefers-reduced-motion:reduce){
   .stage__slide{transition:none}
   .stage__slide img{transition:none;transform:none}
-  .stage__slide[data-active="true"] img{transform:none}
-  .stage__tick::after{transition:none}
+  .stage[data-armed="true"] .stage__slide[data-active="true"] img{transform:none}
+  .stage[data-armed="true"] .stage__tick[aria-current="true"]::after{animation:none}
 }
 
 /* ------------------------------------------------------ scroll reveal --- */

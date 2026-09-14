@@ -48,3 +48,25 @@ Body: Inter, normal case, weight 300.
   `CreativeWork` as it applies. It must match the visible copy exactly.
 - A row added to `sitemap.xml`
 - Real alt text on every image, naming the room, the project and the city
+- URLs that end in a slash everywhere: links, canonical, `og:url`, JSON-LD and
+  `sitemap.xml`. `/portfolio/`, never `/portfolio`. GitHub Pages and Cloudflare
+  both serve a folder page at the slash and redirect the bare form, so a missing
+  slash costs every visitor and crawler a redirect.
+- A real `src` on every `<img>`. Defer with `loading="lazy"`, never `data-src`,
+  which crawlers and link previews read as an empty image.
+- The favicon set in the head: `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`
+
+## Changing site.css or site.js
+
+Bump the `?v=` number on the `site.css` and `site.js` links in every page.
+Browsers and the CDN keep serving the old file otherwise.
+
+## Before pushing
+
+    python3 scripts/check-site.py
+    node scripts/check-stage.mjs
+
+Both must pass. `check-site.py` needs no browser and covers every page, the
+sitemap, `_redirects` and the favicon set. `check-stage.mjs` drives headless
+Google Chrome through the rotating homepage hero, so run it whenever the
+homepage, `site.css` or `site.js` changes.

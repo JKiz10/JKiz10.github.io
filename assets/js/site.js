@@ -23,18 +23,21 @@
 
 
   // --------------------------------------------------------------- stage ---
-  // Slow cross-fade hero. Progressive enhancement: slide 1 is real HTML with a
-  // real src, so without JS you get a still photograph and nothing is broken.
-  // Slides 2+ carry data-src and are only fetched AFTER window load, so the
-  // carousel never competes with LCP. Honours prefers-reduced-motion by simply
-  // not rotating.
+  // Slow cross-fade hero, built as progressive enhancement. Every frame is a
+  // real <img> with a real src, so crawlers, link previews and AI readers see
+  // all six photographs. Frame 1 is active in the HTML, so without JS the stage
+  // is a still photograph. Frames 2+ are loading="lazy" and held out of layout
+  // by CSS until arm(), which only runs once rotation starts after window load.
+  // So they never compete with LCP, and anyone who prefers reduced motion never
+  // downloads them unless they pick one.
   var stage = document.querySelector('.stage');
   if (stage) {
     var slides = [].slice.call(stage.querySelectorAll('.stage__slide'));
     var ticks  = [].slice.call(stage.querySelectorAll('.stage__tick'));
     var credit = stage.querySelector('.stage__credit');
     var calm   = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var HOLD   = 7000;
+    var HOLD = 7000;          // keep in step with the stage-hold keyframes in site.css
+    var START_DELAY = 600;
     var i = 0, timer = null, loaded = false;
 
     function paint(n) {
@@ -44,32 +47,40 @@
         else t.removeAttribute('aria-current');
       });
       if (credit) {
-        var s = slides[n];
-        credit.innerHTML = '<b>' + (s.dataset.project || '') + '</b>' + (s.dataset.note || '');
+        var name = document.createElement('b');
+        name.textContent = slides[n].dataset.project || '';
+        credit.textContent = '';
+        credit.appendChild(name);
+        credit.appendChild(document.createTextNode(slides[n].dataset.note || ''));
       }
       i = n;
     }
 
-    // Pull in the remaining frames only once the page has settled.
-    function hydrate() {
-      if (loaded) return;
-      loaded = true;
-      slides.forEach(function (s, k) {
-        if (k === 0) return;
-        var img = s.querySelector('img');
-        if (img && img.dataset.src) {
-          if (img.dataset.srcset) img.srcset = img.dataset.srcset;
-          img.src = img.dataset.src;
-        }
-      });
+    // Puts frames 2+ into layout so the lazy loader fetches them. Idempotent.
+    function arm() { stage.setAttribute('data-armed', 'true'); }
+
+    // Moves to the next frame that has loaded. A frame still downloading holds
+    // the current one for another beat; a frame that failed is skipped. Either
+    // way the stage never fades to an empty box.
+    function advance() {
+      for (var k = 1; k < slides.length; k++) {
+        var n = (i + k) % slides.length;
+        var img = slides[n].querySelector('img');
+        if (!img || (img.complete && img.naturalWidth > 0)) { paint(n); return; }
+        if (!img.complete) return;
+      }
     }
 
-    function advance() { paint((i + 1) % slides.length); }
-    function start() { if (!calm.matches && slides.length > 1) { stop(); timer = setInterval(advance, HOLD); } }
-    function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      if (!loaded || calm.matches || slides.length < 2) return;
+      arm();
+      stop();
+      timer = setInterval(advance, HOLD);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
     ticks.forEach(function (t, k) {
-      t.addEventListener('click', function () { hydrate(); paint(k); start(); });
+      t.addEventListener('click', function () { arm(); paint(k); start(); });
     });
     stage.addEventListener('mouseenter', stop);
     stage.addEventListener('mouseleave', start);
@@ -78,12 +89,16 @@
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) stop(); else start();
     });
-
-    paint(0);
-    if (window.requestIdleCallback) requestIdleCallback(hydrate, { timeout: 2500 });
-    else setTimeout(hydrate, 1200);
-    window.addEventListener('load', function () { hydrate(); setTimeout(start, 600); });
     if (calm.addEventListener) calm.addEventListener('change', function () { calm.matches ? stop() : start(); });
+
+    // The HTML marks the opening frame so it shows without JS. Sync the tick and
+    // credit to whichever frame that is, so the three can never disagree.
+    slides.forEach(function (s, k) { if (s.getAttribute('data-active') === 'true') i = k; });
+    paint(i);
+
+    function begin() { loaded = true; setTimeout(start, START_DELAY); }
+    if (document.readyState === 'complete') begin();
+    else window.addEventListener('load', begin);
   }
 
   // ------------------------------------------------------- scroll reveal ---
