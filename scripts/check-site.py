@@ -89,6 +89,22 @@ def check_images(path, html):
             if url.startswith('/') and (reason := problem_with(url)):
                 fail(f'{path}: image {url}: {reason}')
 
+    for block in re.findall(r'<picture>.*?</picture>', html, re.S):
+        if '<img' not in block:
+            fail(f'{path}: <picture> with no <img> fallback')
+        for source in re.findall(r'<source\b[^>]*>', block):
+            counts['webp sources'] += 1
+            srcset = re.search(r'\ssrcset="([^"]+)"', source)
+            if not srcset:
+                fail(f'{path}: <source> with no srcset')
+                continue
+            candidates = [c.strip().split() for c in srcset.group(1).split(',')]
+            if any(len(c) > 1 for c in candidates) and ' sizes="' not in source:
+                fail(f'{path}: <source> uses width descriptors without sizes')
+            for candidate in candidates:
+                if reason := problem_with(candidate[0]):
+                    fail(f'{path}: source {candidate[0]}: {reason}')
+
 
 def check_urls(path, html):
     for href in re.findall(r'href="(/(?!/)[^"]*)"', html):

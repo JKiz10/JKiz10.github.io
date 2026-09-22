@@ -101,6 +101,8 @@ body{
 
 /* Photos: sharp corners, no frame, ever. BOS 1.5 */
 img{max-width:100%;height:auto;display:block;border-radius:0;border:0;box-shadow:none}
+/* A <picture> must not make a box of its own: the img is what every layout rule targets. */
+picture{display:contents}
 figure{margin:0}
 
 /* --------------------------------------------------------------- type --- */

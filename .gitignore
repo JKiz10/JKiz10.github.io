@@ -13,3 +13,6 @@ assets/img/projects/*/
 # Old broken .git directory, left in place for you to inspect and delete.
 # Ignored so it can never be committed by accident.
 _git-broken-DELETE-ME/
+
+# Build artefact of scripts/build-photos.py, regenerate with: build-photos.py plan
+scripts/photo-plan.json
