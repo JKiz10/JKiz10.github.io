@@ -31,6 +31,7 @@ FAVICON_TAGS = (
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
 )
+HEADER_PHONE = '<a class="announce__phone" href="tel:+18323047134" data-cta="announce-phone">832-304-7134</a>'
 MIN_INBOUND_PAGES = 3
 failures = []
 
@@ -134,6 +135,8 @@ def check_head(path, html):
     for tag in FAVICON_TAGS:
         if tag not in html:
             fail(f'{path}: missing {tag}')
+    if HEADER_PHONE not in html:
+        fail(f'{path}: no phone number in the header banner')
     linked = dict(ASSET_LINK.findall(html))
     for asset in ('css/site.css', 'js/site.js'):
         if asset not in linked:

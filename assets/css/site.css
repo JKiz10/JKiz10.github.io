@@ -166,9 +166,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .announce{
   background:var(--jkd-steel-blue);color:#fff;min-height:42px;
   display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:4px clamp(14px,3vw,30px);
   font-size:var(--t-label);letter-spacing:var(--track-wide);
   text-transform:uppercase;text-align:center;padding:11px 16px;
 }
+/* The number stays on one line and stays tappable on a phone. */
+.announce__phone{white-space:nowrap}
+/* On a phone the banner keeps the two things worth tapping and drops the lead. */
+@media (max-width:620px){.announce__lead{display:none}}
 .announce a{border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;transition:border-color .2s}
 .announce a:hover{border-bottom-color:var(--jkd-gold)}
 
