@@ -42,22 +42,22 @@
 # holcombe-condo at 1024px, gentleman-s-retreat has 7 photos).
 # blue-heron-bathroom IS worth rebuilding, its photography is good. Next pass.
 /blue-heron-bathroom     /portfolio/blue-heron-bathroom/     301
-/pebble-brook            /portfolio/                         301
-/collective-washroom     /portfolio/                         301
-/holcombe-condo          /portfolio/                         301
-/longwood                /portfolio/                         301
-/pine-lodge              /portfolio/                         301
-/markee-oaks             /portfolio/                         301
-/alexandria              /portfolio/                         301
-/gentleman-s-retreat     /portfolio/                         301
-/crescent-bath           /portfolio/#bathrooms               301
-/fox-run-modern-bath     /portfolio/#bathrooms               301
-/fox-run-modern-kitchen  /portfolio/#kitchens                301
-/heights-primary-bath    /portfolio/#bathrooms               301
-/branstetter-kitchen     /portfolio/#kitchens                301
-/ambrose-kitchen         /portfolio/#kitchens                301
-/marrelli-project        /portfolio/                         301
-/pool-envy-commercial    /portfolio/                         301
+/pebble-brook            /portfolio/pebble-brook/            301
+/collective-washroom     /portfolio/collective-washroom/     301
+/holcombe-condo          /portfolio/holcombe-condo/          301
+/longwood                /portfolio/longwood/                301
+/pine-lodge              /portfolio/pine-lodge/              301
+/markee-oaks             /portfolio/markee-oaks/             301
+/alexandria              /portfolio/alexandria/              301
+/gentleman-s-retreat     /portfolio/gentleman-s-retreat/     301
+/crescent-bath           /portfolio/crescent-bath/           301
+/fox-run-modern-bath     /portfolio/fox-run-modern-bath/     301
+/fox-run-modern-kitchen  /portfolio/fox-run-modern-kitchen/  301
+/heights-primary-bath    /portfolio/heights-primary-bath/    301
+/branstetter-kitchen     /portfolio/branstetter-kitchen/     301
+/ambrose-kitchen         /portfolio/ambrose-kitchen/         301
+/marrelli-project        /portfolio/marrelli-project/        301
+/pool-envy-commercial    /portfolio/pool-envy-commercial/    301
 
 # --- Duplicate WordPress project posts ---------------------------------------
 # 33 thin duplicates live at dated permalinks and, unlike the real pages, they
