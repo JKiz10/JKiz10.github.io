@@ -22,8 +22,10 @@ designing or writing anything. It wins over anything in this file.
 8. **Photos appear two ways only in a multi-element layout:** full-bleed
    background, or a clean left-side vertical rectangle with text on the right.
    Never a thin horizontal banner strip.
-9. **Never publish rates.** No hourly figures, no package prices, anywhere.
-   Route cost questions to Jennifer or Javan.
+9. **Rates live on `/process/` and nowhere else.** Onsite design consultation
+   $300 an hour, contracted design $175 an hour, published at Jennifer's
+   request on 2026-09-28. No package prices, no project totals, no estimates
+   on any other page. Scope and budget questions still route to Jennifer or Javan.
 10. **Voice is first-person plural.** We, our, us. Warm, short, specific.
     Never open with a question. No "stunning", "gorgeous", "excited to
     announce". Name the room and the color instead.

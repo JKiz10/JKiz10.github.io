@@ -539,6 +539,36 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   .reveal{opacity:1;transform:none;transition:none}
 }
 
+/* --------------------------------------------------------------- reel --- */
+/* Four tall photographs across, the way the slideshow on the old site read.
+   Scroll snapping does the work. The arrows only nudge the track, so touch
+   and trackpads behave normally and keyboard users can tab into it. */
+.reel__head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--gap-md);
+  margin-bottom:var(--gap-md)}
+.reel__nav{display:flex;gap:10px;flex:0 0 auto}
+.reel__arrow{width:44px;height:44px;border:1px solid var(--rule);background:transparent;color:var(--ink);
+  font-family:var(--sans);font-size:1rem;line-height:1;cursor:pointer;transition:background .2s,border-color .2s}
+.reel__arrow:hover{background:var(--jkd-linen);border-color:var(--ink)}
+.reel__arrow[disabled]{opacity:.3;cursor:default}
+.reel__track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3 * var(--gap-sm)) / 4);
+  gap:var(--gap-sm);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch}
+.reel__track::-webkit-scrollbar{display:none}
+.reel__item{scroll-snap-align:start}
+.reel__item img{width:100%;aspect-ratio:3/4;object-fit:cover}
+@media (max-width:1100px){.reel__track{grid-auto-columns:calc((100% - var(--gap-sm)) / 2)}}
+@media (max-width:700px){.reel__track{grid-auto-columns:78%}}
+
+/* ---------------------------------------------------------------- rates --- */
+.rates{display:grid;gap:var(--gap-md);margin:0}
+.rate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--gap-xs) var(--gap-md);
+  align-items:baseline;padding-bottom:var(--gap-sm);border-bottom:1px solid var(--rule)}
+.rate__name{font-family:var(--sans);font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink)}
+.rate__figure{font-family:var(--display);font-size:var(--t-title);letter-spacing:.06em;margin:0;text-align:right}
+.rate__note{grid-column:1 / -1;margin:0;font-size:var(--t-small);color:var(--ink-soft);max-width:60ch}
+@media (max-width:560px){.rate{grid-template-columns:1fr}.rate__figure{text-align:left}}
+
 /* ------------------------------------------------------ editorial band --- */
 /* Full-bleed photograph with the story set beside it. Not a banner strip:
    the image keeps a tall aspect and the type sits in its own column. BOS 4.6 */
@@ -548,6 +578,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .editorial__body{display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,6vw,88px) clamp(24px,5vw,72px)}
 .editorial__body .display{margin-bottom:var(--gap-sm)}
+/* The cover story runs a portrait photograph, so its photo column narrows. */
+.editorial--portrait{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.editorial--portrait .editorial__media{min-height:clamp(460px,80vh,900px)}
 @media (max-width:880px){
   .editorial{grid-template-columns:1fr}
   .editorial__media{min-height:clamp(300px,52vh,480px)}

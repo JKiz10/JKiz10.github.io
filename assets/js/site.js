@@ -101,6 +101,37 @@
     else window.addEventListener('load', begin);
   }
 
+  // ---------------------------------------------------------------- reel ---
+  // The photo reel scrolls on its own with touch, a trackpad or the keyboard.
+  // These arrows are only for a mouse, so they nudge the track by one frame
+  // and grey themselves out at each end.
+  var reelTrack = document.querySelector('.reel__track');
+  if (reelTrack) {
+    var arrows = [].slice.call(document.querySelectorAll('[data-reel]'));
+    var stillness = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function frameWidth() {
+      var first = reelTrack.firstElementChild;
+      return first ? first.getBoundingClientRect().width + 16 : reelTrack.clientWidth;
+    }
+    function syncArrows() {
+      var end = reelTrack.scrollWidth - reelTrack.clientWidth - 2;
+      arrows.forEach(function (button) {
+        var back = Number(button.dataset.reel) < 0;
+        button.disabled = back ? reelTrack.scrollLeft <= 2 : reelTrack.scrollLeft >= end;
+      });
+    }
+    arrows.forEach(function (button) {
+      button.addEventListener('click', function () {
+        reelTrack.scrollBy({ left: Number(button.dataset.reel) * frameWidth(),
+                             behavior: stillness.matches ? 'auto' : 'smooth' });
+      });
+    });
+    reelTrack.addEventListener('scroll', syncArrows, { passive: true });
+    window.addEventListener('resize', syncArrows);
+    syncArrows();
+  }
+
   // ------------------------------------------------------- scroll reveal ---
   // Content ships visible. This only runs where IntersectionObserver exists and
   // motion is welcome, so nothing can ever be hidden by a failure here.

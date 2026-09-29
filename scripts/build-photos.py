@@ -46,12 +46,14 @@ ROLES = {
     'feature': ((800, 1100, 1400), '(max-width: 880px) 92vw, (max-width: 1240px) 40vw, 500px'),
     'editorial': ((800, 1100, 1400), '(max-width: 880px) 100vw, 58vw'),
     'card': ((800,), None),
+    # Four across on a desktop, two on a tablet, one and a bit on a phone.
+    'reel': ((800, 1100), '(max-width: 700px) 78vw, (max-width: 1100px) 46vw, 344px'),
 }
 # First match wins, tested against every class on every ancestor. Pair before gallery.
 ROLE_BY_CLASS = (
     ('stage__slide', 'hero'), ('proj-hero__media', 'hero'), ('gallery__pair', 'pair'), ('gallery', 'gallery'),
     ('person__media', 'person'), ('feature__media', 'feature'), ('editorial__media', 'editorial'),
-    ('pcard__media', 'card'), ('project__media', 'card'),
+    ('pcard__media', 'card'), ('project__media', 'card'), ('reel__item', 'reel'),
 )
 
 
