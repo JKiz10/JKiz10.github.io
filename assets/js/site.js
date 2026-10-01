@@ -13,7 +13,7 @@
       toggle.textContent = open ? 'Menu' : 'Close';
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A' && window.innerWidth <= 1000) {
+      if (e.target.tagName === 'A' && window.innerWidth <= 1240) {
         nav.setAttribute('data-open', 'false');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.textContent = 'Menu';

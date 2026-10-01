@@ -48,7 +48,11 @@
   /* Working roles */
   --ink:var(--jkd-deep-gray);
   --ink-soft:#5C5C5C;
-  --ink-muted:var(--jkd-stone);
+  /* Text siblings of Stone and Gold. The brand colours are 2.46:1 and 2.24:1 on
+     Linen, which fails WCAG for any size. These clear 4.5:1 and read as the same
+     colours. Stone and Gold themselves still draw hairlines, diamonds and hovers. */
+  --ink-muted:#656667;
+  --gold-text:#7A6232;
   --ground:var(--jkd-linen);          /* default warm ground, BOS 2.1 */
   --ground-white:var(--jkd-white);    /* card fills and negative space */
   --ground-dark:var(--jkd-deep-gray);
@@ -81,10 +85,10 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-padding-top:96px;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
 body{
@@ -124,9 +128,9 @@ h1,h2,h3,h4{margin:0;font-weight:400;text-wrap:balance}
 .eyebrow{
   font-family:var(--sans);font-size:var(--t-label);font-weight:400;
   letter-spacing:var(--track-xwide);text-transform:uppercase;
-  color:var(--jkd-stone);margin:0 0 var(--gap-sm);
+  color:var(--ink-muted);margin:0 0 var(--gap-sm);
 }
-.eyebrow--gold{color:var(--jkd-gold)}
+.eyebrow--gold{color:var(--gold-text)}
 .eyebrow--light{color:rgba(255,255,255,.82)}
 
 p{margin:0 0 1.15em;max-width:var(--measure)}
@@ -142,7 +146,10 @@ p{margin:0 0 1.15em;max-width:var(--measure)}
 strong{font-weight:500;color:var(--ink)}
 
 a{color:inherit;text-decoration:none}
-a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--jkd-gold);outline-offset:4px}
+a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-visible{outline:2px solid var(--jkd-steel-blue);outline-offset:4px}
+/* On the dark bands steel blue disappears, so the ring goes to Linen there. */
+.band--dark :focus-visible,.band--blue :focus-visible,.site-footer :focus-visible,
+.announce :focus-visible,.stage :focus-visible,.proj-hero :focus-visible{outline-color:var(--jkd-linen)}
 
 /* ------------------------------------------------------------- layout --- */
 .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
@@ -198,7 +205,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .nav-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer;font-family:var(--sans);
   font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase;color:var(--ink)}
 
-@media (max-width:1020px){
+@media (max-width:1240px){
   .nav-toggle{display:block}
   .nav{position:absolute;top:100%;left:calc(-1 * clamp(20px,5vw,56px));right:calc(-1 * clamp(20px,5vw,56px));
     flex-direction:column;align-items:stretch;gap:0;background:var(--jkd-linen);
@@ -248,9 +255,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .photo-slot--hero{aspect-ratio:auto;height:100%;min-height:460px}
 
 /* -------------------------------------------------------- authority --- */
-.authority{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1px;background:var(--rule)}
-.authority__item{background:var(--jkd-linen);padding:var(--gap-md) var(--gap-sm);text-align:center}
+/* The hairlines used to be this grid's own background showing through a 1px gap, which
+   painted a grey slab wherever four items did not fill their rows. Each item draws its
+   own hairline now, so an incomplete row leaves nothing behind. */
+.authority{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+  gap:1px}
+.authority__item{background:var(--jkd-linen);padding:var(--gap-md) var(--gap-sm);text-align:center;
+  box-shadow:0 0 0 1px var(--rule)}
 .band--white .authority__item{background:var(--jkd-white)}
 .authority__fig{font-family:var(--display);text-transform:uppercase;
   font-size:clamp(1.7rem,2.7vw,2.3rem);line-height:1;color:var(--jkd-steel-blue);
@@ -285,7 +296,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .project__media img{transition:transform .8s cubic-bezier(.2,.7,.3,1);width:100%}
 .project:hover .project__media img{transform:scale(1.04)}
 .project__meta{font-size:var(--t-label);letter-spacing:var(--track-mid);
-  text-transform:uppercase;color:var(--jkd-gold);margin-bottom:7px}
+  text-transform:uppercase;color:var(--gold-text);margin-bottom:7px}
 .project__name{font-family:var(--display);text-transform:uppercase;font-size:var(--t-title);
   letter-spacing:.09em;line-height:1.28;color:var(--ink);font-weight:300;transition:color .25s}
 .project:hover .project__name{color:var(--jkd-steel-blue)}
@@ -308,14 +319,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .quote blockquote{margin:0;font-family:var(--display);text-transform:uppercase;
   font-size:clamp(1.25rem,2.3vw,1.8rem);line-height:1.45;letter-spacing:.055em;font-weight:300}
 .quote figcaption{margin-top:var(--gap-sm);font-size:var(--t-label);
-  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--jkd-gold)}
+  letter-spacing:var(--track-wide);text-transform:uppercase;color:var(--gold-text)}
 
 /* ------------------------------------------------------------- awards --- */
 .awards{border-top:1px solid var(--rule)}
 .award{display:grid;grid-template-columns:110px 1fr;gap:var(--gap-md);
   padding:var(--gap-md) 0;border-bottom:1px solid var(--rule);align-items:start}
 .award__year{font-family:var(--display);text-transform:uppercase;font-size:1.5rem;font-weight:300;
-  color:var(--jkd-gold);font-variant-numeric:tabular-nums;line-height:1;padding-top:.18em}
+  color:var(--gold-text);font-variant-numeric:tabular-nums;line-height:1;padding-top:.18em}
 .award__name{font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:5px}
 .award__detail{font-size:var(--t-small);color:var(--ink-soft);margin:0;max-width:none}
 .award__detail a{border-bottom:1px solid var(--rule);transition:border-color .2s,color .2s}
@@ -327,7 +338,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .step{counter-increment:step;display:grid;grid-template-columns:60px 1fr;gap:var(--gap-md);
   padding:var(--gap-md) 0;border-bottom:1px solid var(--rule)}
 .step::before{content:counter(step,decimal-leading-zero);font-family:var(--display);
-  color:var(--jkd-gold);font-size:1.1rem;letter-spacing:.1em;padding-top:.4em;font-weight:300}
+  color:var(--gold-text);font-size:1.1rem;letter-spacing:.1em;padding-top:.4em;font-weight:300}
 .step h3{font-family:var(--display);text-transform:uppercase;font-size:var(--t-title);
   letter-spacing:.09em;margin-bottom:6px;font-weight:300}
 .step p{margin:0;font-size:var(--t-small);color:var(--ink-soft)}
@@ -365,7 +376,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .footer__logo img{height:64px;width:auto;margin-bottom:var(--gap-sm)}
 .footer__tagline{font-size:var(--t-label);letter-spacing:var(--track-mid);
   text-transform:uppercase;color:rgba(241,239,237,.6);margin:0 0 var(--gap-sm)}
-.site-footer h4{font-size:var(--t-label);letter-spacing:var(--track-wide);text-transform:uppercase;
+.site-footer h3{font-size:var(--t-label);letter-spacing:var(--track-wide);text-transform:uppercase;
   color:#fff;margin:0 0 var(--gap-sm);font-weight:400}
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer li{margin-bottom:11px;font-size:var(--t-small)}
