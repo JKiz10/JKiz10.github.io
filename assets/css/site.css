@@ -408,6 +408,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 /* Team card. Photo is a clean vertical rectangle with the text below it,
    sharp corners, no frame, no shadow, no radius. BOS 1.5, 4.6 */
 .person__media{margin-bottom:var(--gap-sm);background:var(--jkd-linen);overflow:hidden}
+/* The team portraits are out being re-photographed. The cards keep the names,
+   roles and bios, so the page is not an empty shell while the pictures are away. */
+.team-note{margin:0 0 var(--gap-lg);padding:14px 18px;border-left:2px solid var(--jkd-gold);
+  background:var(--jkd-linen);color:var(--ink-soft);font-size:.98rem;line-height:1.6;max-width:62ch}
+.team-note b{color:var(--jkd-deep-gray);font-weight:500}
 .person__media img,.person__media .photo-slot{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
 .person__role{font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase;
   color:var(--ink-muted);margin:0 0 6px}
