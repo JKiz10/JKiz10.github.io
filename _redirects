@@ -74,7 +74,7 @@
 /2024/01/16/friends-knoll-kitchen/   /portfolio/knoll-kitchen/                301
 /2024/01/16/jenns-kitchen/           /portfolio/jenn-s-kitchen/               301
 /2024/01/16/evergreen-bathroom/      /portfolio/evergreen-suite-bathroom/     301
-/2024/01/16/vue-point/               /portfolio/vue-point/                    301
+/2024/08/16/vue-point/               /portfolio/vue-point/                    301
 /2024/01/16/rockpoint-project/       /portfolio/rockpoint-project/            301
 /2024/01/16/starfish-vacation-home/  /portfolio/starfish-vacation-home/       301
 /2024/01/16/pinewold-kitchen/        /portfolio/pinewold-kitchen/             301
@@ -82,12 +82,31 @@
 /2024/01/16/silver-moon-project/     /portfolio/silver-moon-project/          301
 /2024/01/16/mountain-falls-primary-bath/ /portfolio/mountain-falls-primary-bath/ 301
 /2024/01/16/evergreen-suite-bedroom/ /portfolio/evergreen-suite-bedroom/      301
+/2024/01/16/ambrose-kitchen/         /portfolio/ambrose-kitchen/              301
+/2024/01/16/blue-heron-bathroom/     /portfolio/blue-heron-bathroom/          301
+/2024/01/16/branstetter-kitchen/     /portfolio/branstetter-kitchen/          301
+/2024/01/16/fox-run-modern-kitchen/  /portfolio/fox-run-modern-kitchen/       301
+/2024/01/16/longwood-kitchen/        /portfolio/longwood/                     301
+/2024/01/16/marrelli-primary-suite/  /portfolio/marrelli-project/             301
+/2024/01/16/pool-envy-commercial/    /portfolio/pool-envy-commercial/         301
+/2024/07/22/crescent-bath/           /portfolio/crescent-bath/                301
+/2024/07/24/fox-run-modern-bath/     /portfolio/fox-run-modern-bath/          301
+/2024/07/30/heights-primary-bath/    /portfolio/heights-primary-bath/         301
+
+# The six blog posts have no new home. The homepage is a better landing than the
+# portfolio hub, which is what the /2024/* wildcard would otherwise give them.
+/2024/01/16/welcome-to-the-blog/                                          / 301
+/2024/01/16/how-to-create-the-perfect-gallery-wall/                       / 301
+/2024/01/16/lets-get-it-started-4-things-to-ask-before-starting-a-project/ / 301
+/2024/01/16/like-mom-used-to-say-dont-forget-your-layers/                 / 301
+/2024/01/16/tackling-a-bathroom-remodel/                                  / 301
+/2024/01/16/this-season-for-decor-updating/                               / 301
 
 # There was no /2025/* wildcard at all. Three 2025-dated posts are live 200s on
 # the old site today and would have hard 404ed on cutover.
-/2025/01/16/markee-oaks/             /portfolio/                              301
-/2025/01/29/gentlemens-retreat/      /portfolio/                              301
-/2025/03/20/alexandria-project/      /portfolio/                              301
+/2025/01/16/markee-oaks/             /portfolio/markee-oaks/                  301
+/2025/01/29/gentlemens-retreat/      /portfolio/gentleman-s-retreat/          301
+/2025/03/20/alexandria-project/      /portfolio/alexandria/                   301
 /2025/*                              /portfolio/                              301
 
 # Two real pages with zero coverage.

@@ -32,6 +32,9 @@ FAVICON_TAGS = (
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
 )
 HEADER_PHONE = '<a class="announce__phone" href="tel:+18323047134" data-cta="announce-phone">832-304-7134</a>'
+# The portfolio shipped for weeks with the two preconnects but no stylesheet, so every
+# project page fell back to Georgia. Presence of the preconnect is not evidence of the font.
+FONT_STYLESHEET = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond'
 MIN_INBOUND_PAGES = 3
 failures = []
 
@@ -135,6 +138,10 @@ def check_head(path, html):
     for tag in FAVICON_TAGS:
         if tag not in html:
             fail(f'{path}: missing {tag}')
+    if FONT_STYLESHEET not in html:
+        fail(f'{path}: no Google Fonts stylesheet, so the page falls back to Georgia')
+    elif 'fonts.gstatic.com' not in html:
+        fail(f'{path}: links the font stylesheet without preconnecting to fonts.gstatic.com')
     if HEADER_PHONE not in html:
         fail(f'{path}: no phone number in the header banner')
     linked = dict(ASSET_LINK.findall(html))

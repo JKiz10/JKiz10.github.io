@@ -144,7 +144,7 @@
         e.target.setAttribute('data-seen', 'true');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
     [].forEach.call(wants, function (el) { el.classList.add('reveal'); io.observe(el); });
   }
 
