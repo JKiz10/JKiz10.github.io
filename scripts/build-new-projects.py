@@ -178,7 +178,8 @@ for slug, project in data.items():
         if role in ('hero', 'cover'):
             continue
         src, alt_text, w, h = project['files'][f'{number}|{role}']
-        tag = f'<figure>{img_tag(src, alt_text, w, h)}</figure>'
+        portrait = ' class="portrait"' if h > w and role != 'p' else ''
+        tag = f'<figure{portrait}>{img_tag(src, alt_text, w, h)}</figure>'
         if role == 'p':
             pair.append(tag)
             if len(pair) == 2:
