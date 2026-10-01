@@ -288,7 +288,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .grid{display:grid;gap:var(--gap-md)}
 /* min() so a narrow phone collapses to one column instead of overflowing the page */
 .grid--2{grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr))}
-.grid--3{grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr))}
+/* auto-fill, not auto-fit: a section with one card keeps the card size instead of
+   stretching a 800px photo across the whole row. */
+.grid--3{grid-template-columns:repeat(auto-fill,minmax(min(290px,100%),1fr))}
 .grid--4{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
 
 .project{display:block}
@@ -469,6 +471,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 /* A portrait photograph at full column width runs two screens tall, which reads
    as shouting. On its own it is held to a width that fits one screen. */
 .gallery > figure.portrait{max-width:660px;margin-inline:auto}
+.gallery__pair figure{margin-bottom:0}
 /* Three projects came over from the old site as small files and nothing larger
    exists. Holding those to their own pixel width keeps them sharp. */
 .gallery > figure.soft{max-width:760px;margin-inline:auto}

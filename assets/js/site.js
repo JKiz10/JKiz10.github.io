@@ -41,7 +41,12 @@
     var i = 0, timer = null, loaded = false;
 
     function paint(n) {
-      slides.forEach(function (s, k) { s.setAttribute('data-active', String(k === n)); });
+      slides.forEach(function (s, k) {
+        s.setAttribute('data-active', String(k === n));
+        // only the visible frame belongs in the accessibility tree
+        if (k === n) s.removeAttribute('aria-hidden');
+        else s.setAttribute('aria-hidden', 'true');
+      });
       ticks.forEach(function (t, k) {
         if (k === n) t.setAttribute('aria-current', 'true');
         else t.removeAttribute('aria-current');
@@ -82,8 +87,8 @@
     ticks.forEach(function (t, k) {
       t.addEventListener('click', function () { arm(); paint(k); start(); });
     });
-    stage.addEventListener('mouseenter', stop);
-    stage.addEventListener('mouseleave', start);
+    stage.addEventListener('pointerenter', stop);
+    stage.addEventListener('pointerleave', start);
     stage.addEventListener('focusin', stop);
     stage.addEventListener('focusout', start);
     document.addEventListener('visibilitychange', function () {
