@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page Not Found | Jennifer Kizzee Design</title>
+<meta name="description" content="That page is not here. The portfolio, the services and the contact page are all one click away.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;family=Inter:wght@200;300;400;500&amp;display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v=13">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="announce">
+  <span><span class="announce__lead">Now booking Houston renovations and new builds. </span><a href="/contact/" data-cta="announce">Schedule a consult with a designer</a></span>
+  <a class="announce__phone" href="tel:+18323047134" data-cta="announce-phone">832-304-7134</a>
+</div>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="masthead__logo" href="/" aria-label="Jennifer Kizzee Design, home">
+      <img src="/assets/brand/jennifer-kizzee-secondary-deep-gray.svg" alt="Jennifer Kizzee Design" width="148" height="36">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="/houston-interior-designer/">Houston Interior Design</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/jennifer-kizzee/">Jennifer</a>
+      <a href="/team/">The Team</a>
+      <a href="/recognition/">Recognition</a>
+      <a href="/process/">Process</a>
+      <a class="nav__cta" href="/contact/" data-cta="nav">Book a Consult</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="band band--linen center">
+    <div class="wrap wrap--narrow">
+      <p class="eyebrow">Error 404</p>
+      <h1>That page is not here</h1>
+      <div class="rule-diamond" aria-hidden="true"></div>
+      <p class="lede">The link may be old, or the address may have a typo in it. Everything below is one click away.</p>
+      <p class="hero__actions">
+        <a class="btn btn--primary" href="/portfolio/" data-cta="404-portfolio">See the portfolio</a>
+        <a class="btn btn--ghost" href="/contact/" data-cta="404-contact">Get in touch</a>
+      </p>
+      <p class="mt-md"><a class="link-underline" href="/">Back to the home page</a></p>
+    </div>
+  </section>
+</main>
+
+<script>
+/* The old WordPress site had six wildcard URL patterns. GitHub Pages cannot redirect
+   them server side, so they land here and are matched in the browser instead. */
+/* REDIRECT TABLE */
+const MOVED = [
+  ["/author/", "/jennifer-kizzee/"],
+  ["/2025/", "/portfolio/"],
+  ["/blog/page/", "/"],
+  ["/2024/", "/portfolio/"],
+  ["/2023/", "/portfolio/"],
+  ["/category/", "/portfolio/"]
+];
+/* END REDIRECT TABLE */
+(function () {
+  var path = location.pathname;
+  for (var i = 0; i < MOVED.length; i++) {
+    if (path.indexOf(MOVED[i][0]) === 0) {
+      location.replace(MOVED[i][1]);
+      return;
+    }
+  }
+})();
+</script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">
+          <img src="/assets/brand/jennifer-kizzee-primary-white.svg" alt="Jennifer Kizzee Design" width="156" height="64">
+        </div>
+        <p class="footer__tagline">Fresh Spaces. Inspiring Designs. Everyday Living.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/jenniferkizzeedesign/" rel="noopener">Instagram</a>
+          <a href="https://www.houzz.com/professionals/interior-designers-and-decorators/jennifer-kizzee-design-pfvwus-pf~344631941" rel="noopener">Houzz</a>
+          <a href="https://www.pinterest.com/jenniferkizzeedesign/" rel="noopener">Pinterest</a>
+          <a href="https://www.facebook.com/jenniferkizzeedesign/" rel="noopener">Facebook</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Design</h4>
+        <ul>
+          <li><a href="/houston-interior-designer/">Houston Interior Design</a></li>
+          <li><a href="/houston-interior-designer/whole-home-renovation/">Whole-Home Renovation</a></li>
+          <li><a href="/houston-interior-designer/new-construction/">New Construction</a></li>
+          <li><a href="/houston-interior-designer/kitchen-and-bath/">Kitchen &amp; Bath</a></li>
+          <li><a href="/process/">Our Process</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="/jennifer-kizzee/">Jennifer Kizzee</a></li>
+          <li><a href="/team/">The Team</a></li>
+          <li><a href="/recognition/">Recognition</a></li>
+          <li><a href="/portfolio/">Portfolio</a></li>
+          <li><a href="/careers/">Careers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <address>
+          2116 Sedona Dr<br>
+          League City, TX 77573<br>
+          <a href="tel:+18323047134">832-304-7134</a><br>
+          <a href="mailto:info@jenniferkizzee.com">info@jenniferkizzee.com</a>
+        </address>
+        <p style="margin-top:1rem"><a class="link-underline" href="/contact/" data-cta="footer-contact">Book a Consult</a></p>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Jennifer Kizzee Design. All rights reserved.</span>
+      <span>Serving Houston and Greater Houston from League City, Texas.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js?v=13" defer></script>
+</body>
+</html>
