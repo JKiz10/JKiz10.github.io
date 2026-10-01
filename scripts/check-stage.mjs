@@ -21,10 +21,9 @@ const HOLD_MS = 7000;
 const START_DELAY_MS = 600;
 const CROSSFADE_MARGIN_MS = 2200;
 const CHROME_START_TIMEOUT_MS = 20000;
-const FRAMES = [
-  'vue-point-bedroom-canopy-hero', 'gateway-condo-primary-bedroom-hero', 'rockpoint-primary-bathroom-hero',
-  'knoll-kitchen-plaster-hood-hero', 'evergreen-bedroom-navy-grid-wall-hero', 'starfish-covered-porch-hero',
-];
+// The frames are read from the page at run time, so swapping the hero photos
+// never makes this file wrong.
+let frames = [];
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.jpg': 'image/jpeg',
   '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.xml': 'application/xml',
@@ -34,7 +33,7 @@ const args = process.argv.slice(2);
 const shotsDir = args.includes('--shots') ? path.resolve(args[args.indexOf('--shots') + 1]) : null;
 const remoteOrigin = args.find((arg) => /^https?:\/\//.test(arg));
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const frameOf = (url) => FRAMES.findIndex((frame) => url.includes(`/${frame}`));
+const frameOf = (url) => frames.findIndex((frame) => url.includes(`/${frame.file}`));
 
 // Serves the repo the way GitHub Pages does: a folder URL without its trailing
 // slash gets a 301, and the slashed form serves index.html.
@@ -201,14 +200,28 @@ async function scenario(chrome, base, name, opt) {
 const server = remoteOrigin ? null : await serveRepo();
 const base = remoteOrigin ? remoteOrigin.replace(/\/$/, '') : `http://127.0.0.1:${server.address().port}`;
 const chrome = await launchChrome();
+
+async function readFrames(base) {
+  const page = await chrome.newPage();
+  await page.send('Page.enable');
+  await page.goto(`${base}/`);
+  const found = await page.eval(`[...document.querySelectorAll('.stage__slide')].map((slide) => ({
+    file: (slide.querySelector('img').getAttribute('src') || '').split('/').pop().replace(/\\.[a-z]+$/, ''),
+    project: slide.dataset.project || '' }))`);
+  await page.close();
+  return found;
+}
+
 const run = {};
+frames = await readFrames(base);
+if (frames.length < 2) throw new Error('no stage frames found on the homepage');
 try {
   run.desktop = await scenario(chrome, base, 'desktop', { width: 1440, height: 900 });
   run.mobile = await scenario(chrome, base, 'mobile', { width: 390, height: 844, dpr: 3, mobile: true });
   run.noJs = await scenario(chrome, base, 'no-js', { width: 1440, height: 900, noJs: true });
   run.calm = await scenario(chrome, base, 'reduced-motion', { width: 1440, height: 900, reducedMotion: true });
   run.calmClick = await scenario(chrome, base, 'reduced-motion-click', { width: 1440, height: 900, reducedMotion: true, clickTick: 2 });
-  run.broken = await scenario(chrome, base, 'frame-2-blocked', { width: 1440, height: 900, block: ['*gateway-condo-primary-bedroom-hero*'] });
+  run.broken = await scenario(chrome, base, 'frame-2-blocked', { width: 1440, height: 900, block: [`*${frames[1].file}*`] });
 } finally {
   await chrome.close();
   if (server) server.close();
@@ -220,12 +233,12 @@ const checks = [
   ['desktop: frames 2-6 not requested until after load', deferred(run.desktop).length >= 5 && deferred(run.desktop).every((q) => q.at > run.desktop.loadAt)],
   ['desktop: rotated to frame 2 after one hold', run.desktop.state.active === 1 && run.desktop.state.tick === 1],
   ['desktop: all six frames loaded', Boolean(run.desktop.state.frames?.every((f) => f.loaded))],
-  ['desktop: credit follows the frame', Boolean(run.desktop.state.credit?.startsWith('Gateway Condo'))],
+  ['desktop: credit follows the frame', Boolean(run.desktop.state.credit?.startsWith(frames[1].project))],
   ['mobile: rotated and loaded', run.mobile.state.active === 1 && Boolean(run.mobile.state.frames?.every((f) => f.loaded))],
   ['mobile: frames 2-6 not requested until after load', deferred(run.mobile).every((q) => q.at > run.mobile.loadAt)],
   ['no JS: first frame visible', run.noJs.state.frames?.[0]?.opacity === '1'],
   ['no JS: other frames out of layout', Boolean(run.noJs.state.frames?.slice(1).every((f) => f.display === 'none'))],
-  ['no JS: credit present in the HTML', Boolean(run.noJs.state.credit?.startsWith('Vue Point'))],
+  ['no JS: credit present in the HTML', Boolean(run.noJs.state.credit?.startsWith(frames[0].project))],
   ['reduced motion: never fetches frames 2-6', deferred(run.calm).length === 0],
   ['reduced motion: holds frame 1', run.calm.state.active === 0 && run.calm.state.armed === null],
   ['reduced motion + click: shows the chosen frame', run.calmClick.state.active === 2 && Boolean(run.calmClick.state.frames?.[2]?.loaded)],
