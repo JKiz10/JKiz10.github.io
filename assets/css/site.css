@@ -177,7 +177,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 
 /* ---------------------------------------------------------- top bars --- */
 .announce{
-  background:var(--jkd-steel-blue);color:#fff;min-height:42px;
+  /* Deep Gray rather than Steel Blue. Both are the brand's dominant pair, and the
+     gray sits quieter above a photograph without competing with it. */
+  background:var(--jkd-deep-gray);color:var(--jkd-linen);min-height:42px;
   display:flex;align-items:center;justify-content:center;
   flex-wrap:wrap;gap:4px clamp(14px,3vw,30px);
   font-size:var(--t-label);letter-spacing:var(--track-wide);
@@ -187,7 +189,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .announce__phone{white-space:nowrap}
 /* On a phone the banner keeps the two things worth tapping and drops the lead. */
 @media (max-width:620px){.announce__lead{display:none}}
-.announce a{border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;transition:border-color .2s}
+.announce a{border-bottom:1px solid rgba(234,227,223,.42);padding-bottom:2px;transition:border-color .2s}
 .announce a:hover{border-bottom-color:var(--jkd-gold)}
 
 .masthead{position:sticky;top:0;z-index:60;background:rgba(234,227,223,.97);
