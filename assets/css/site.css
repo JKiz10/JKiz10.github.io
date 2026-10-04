@@ -549,7 +549,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 /* Frames 2+ stay out of layout until site.js arms the stage. Their images are
    loading="lazy", so nothing is fetched for them during page load. Frame 1 is
    active in the HTML, so without JS the stage is a still photograph. */
+/* A frame only leaves display:none when it is the one showing or the one next in
+   line. Arming all seven at once made a 2x laptop download every hero on the site
+   before the visitor had seen the second one. */
 .stage:not([data-armed="true"]) .stage__slide:not(:first-child){display:none}
+.stage[data-armed="true"] .stage__slide:not([data-active="true"]):not([data-next="true"]):not([data-seen="true"]){display:none}
 .stage__slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.0);
   transition:transform 9500ms linear}
 /* A very slow drift. Transform only, so it never costs a layout pass. It is
@@ -639,7 +643,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 /* Full-bleed photograph with the story set beside it. Not a banner strip:
    the image keeps a tall aspect and the type sits in its own column. BOS 4.6 */
 .editorial{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch}
+/* The grid is align-items:stretch, so this cell used to take the HEIGHT of the text
+   column, which copy length sets. With object-fit:cover that made a 3:2 photograph
+   scale by height while its sizes attribute only described the width, and an 800px
+   file shipped into a slot needing 1,580. Capping the cell makes the slot a shape the
+   sizes attribute can actually state. */
 .editorial__media{position:relative;min-height:clamp(420px,64vh,760px)}
+@media (min-width:881px){
+  .editorial__media{align-self:start;height:clamp(420px,64vh,760px);min-height:0}
+}
 .editorial__media img{width:100%;height:100%;object-fit:cover}
 .editorial__body{display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,6vw,88px) clamp(24px,5vw,72px)}

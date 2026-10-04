@@ -41,8 +41,14 @@
     var i = 0, timer = null, loaded = false;
 
     function paint(n) {
+      var next = (n + 1) % slides.length;
       slides.forEach(function (s, k) {
         s.setAttribute('data-active', String(k === n));
+        // keep the one after this in layout so it is fetched and decoded before its turn,
+        // and remember every frame already seen so going back is instant
+        if (k === n) s.setAttribute('data-seen', 'true');
+        if (k === next) s.setAttribute('data-next', 'true');
+        else s.removeAttribute('data-next');
         // only the visible frame belongs in the accessibility tree
         if (k === n) s.removeAttribute('aria-hidden');
         else s.setAttribute('aria-hidden', 'true');
@@ -70,6 +76,10 @@
     function advance() {
       for (var k = 1; k < slides.length; k++) {
         var n = (i + k) % slides.length;
+        // Frames past the next one are held out of layout so they are never fetched.
+        // Put this candidate in before testing it, or a broken frame would stall the
+        // stage: its successor would read as "still loading" forever.
+        slides[n].setAttribute('data-next', 'true');
         var img = slides[n].querySelector('img');
         if (!img || (img.complete && img.naturalWidth > 0)) { paint(n); return; }
         if (!img.complete) return;
