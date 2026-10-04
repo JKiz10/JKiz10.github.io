@@ -160,7 +160,44 @@
         io.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
-    [].forEach.call(wants, function (el) { el.classList.add('reveal'); io.observe(el); });
+    [].forEach.call(wants, function (el) {
+      el.classList.add('reveal');
+      // Cards and stats come in one after another. The delay follows document order
+      // rather than a guess at how many columns the grid happens to have, and it is
+      // capped so a long gallery never leaves the last item waiting.
+      var run = el.querySelectorAll('.pcard, .authority__item, .person');
+      [].forEach.call(run, function (child, k) {
+        child.style.setProperty('--stagger', Math.min(k, 7) * 70 + 'ms');
+      });
+      io.observe(el);
+    });
+  }
+
+  // ------------------------------------------------------------- drift ---
+  // A full-bleed photograph moves slower than the page, so the band has a little
+  // depth as it passes. Transform only, written once per animation frame, and the
+  // whole thing is skipped when the visitor asked for less motion.
+  var bands = document.querySelectorAll('.proj-hero__media');
+  if (bands.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ticking = false;
+    var drift = function () {
+      ticking = false;
+      [].forEach.call(bands, function (band) {
+        var box = band.getBoundingClientRect();
+        if (box.bottom < 0 || box.top > window.innerHeight) return;
+        // -1 when the band is just below the fold, +1 when it has just left the top
+        var travelled = (window.innerHeight - box.top) / (window.innerHeight + box.height);
+        band.style.setProperty('--drift', ((travelled - 0.5) * 56).toFixed(1) + 'px');
+      });
+    };
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(drift);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    drift();
   }
 
   // Duplicate the marquee track so the loop is seamless

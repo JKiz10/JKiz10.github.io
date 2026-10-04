@@ -602,11 +602,52 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 /* ------------------------------------------------------ scroll reveal --- */
 /* Opacity and transform only. Content is visible by default and the class is
    added by JS, so anything without JS or with reduced motion sees it all. */
+/* Everything here is opacity and transform only, so it stays on the compositor and
+   never costs a layout pass. .reveal is added by JS and only when motion is welcome,
+   so a visitor without JS, or who asked for less motion, sees the finished state. */
+:root{--ease-rise:cubic-bezier(.22,1,.36,1);--rise:1100ms}
+
 .reveal{opacity:0;transform:translateY(18px);
-  transition:opacity 1100ms cubic-bezier(.22,1,.36,1),transform 1100ms cubic-bezier(.22,1,.36,1)}
+  transition:opacity var(--rise) var(--ease-rise),transform var(--rise) var(--ease-rise)}
 .reveal[data-seen="true"]{opacity:1;transform:none}
+
+/* The two halves of an editorial band come in from opposite sides and meet. This is
+   the move Jennifer's current site uses and the one that reads as motion. */
+.reveal .editorial__media{opacity:0;transform:translate3d(-44px,0,0);
+  transition:opacity 1200ms var(--ease-rise) 80ms,transform 1200ms var(--ease-rise) 80ms}
+.reveal .editorial__body{opacity:0;transform:translate3d(36px,0,0);
+  transition:opacity 1200ms var(--ease-rise) 220ms,transform 1200ms var(--ease-rise) 220ms}
+.reveal[data-seen="true"] .editorial__media,
+.reveal[data-seen="true"] .editorial__body{opacity:1;transform:none}
+
+/* A pair opens outward from the gutter rather than both sliding the same way. */
+.reveal .gallery__pair > figure:first-child{opacity:0;transform:translate3d(-30px,10px,0)}
+.reveal .gallery__pair > figure:last-child{opacity:0;transform:translate3d(30px,10px,0)}
+.reveal .gallery__pair > figure{transition:opacity 1150ms var(--ease-rise),transform 1150ms var(--ease-rise)}
+.reveal[data-seen="true"] .gallery__pair > figure:first-child,
+.reveal[data-seen="true"] .gallery__pair > figure:last-child{opacity:1;transform:none}
+
+/* Cards and stats arrive one after another instead of as a block. The delay comes
+   from JS so it follows document order rather than a guess at the column count. */
+.reveal .pcard,.reveal .authority__item,.reveal .person{
+  opacity:0;transform:translateY(22px);
+  transition:opacity 900ms var(--ease-rise),transform 900ms var(--ease-rise);
+  transition-delay:var(--stagger,0ms)}
+.reveal[data-seen="true"] .pcard,
+.reveal[data-seen="true"] .authority__item,
+.reveal[data-seen="true"] .person{opacity:1;transform:none}
+
+/* A full-bleed photograph drifts slower than the page behind its own band. The
+   variable is set by JS on scroll; with no JS it stays 0 and nothing moves. */
+.proj-hero__media img,.stage__slide img{will-change:transform}
+.proj-hero__media{overflow:hidden}
+.proj-hero__media img{transform:translate3d(0,var(--drift,0px),0) scale(1.06)}
+
 @media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
+  .reveal,.reveal .editorial__media,.reveal .editorial__body,
+  .reveal .gallery__pair > figure,.reveal .pcard,.reveal .authority__item,.reveal .person{
+    opacity:1;transform:none;transition:none}
+  .proj-hero__media img{transform:none}
 }
 
 /* --------------------------------------------------------------- reel --- */
