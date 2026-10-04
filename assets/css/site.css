@@ -607,6 +607,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
    so a visitor without JS, or who asked for less motion, sees the finished state. */
 :root{--ease-rise:cubic-bezier(.22,1,.36,1);--rise:1100ms}
 
+/* A sliding element starts outside its own box, which is what made 58 pages scroll
+   sideways the first time this shipped. clip, not hidden: hidden would make these
+   scroll containers and break the sticky masthead and anchor scrolling. */
+.editorial,.gallery,.grid,.authority{overflow-x:clip}
+
 .reveal{opacity:0;transform:translateY(18px);
   transition:opacity var(--rise) var(--ease-rise),transform var(--rise) var(--ease-rise)}
 .reveal[data-seen="true"]{opacity:1;transform:none}
