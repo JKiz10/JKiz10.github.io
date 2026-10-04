@@ -157,9 +157,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .wrap--wide{max-width:1520px}
 .wrap--flush{max-width:none;padding:0}
 
-.band{padding:var(--gap-xl) 0}
-.band--tight{padding:var(--gap-lg) 0}
-.band--tall{padding:var(--gap-2xl) 0}
+/* Measured before this change: 21 to 27 percent of every content page's height was
+   band padding with nothing in it. A flat 6rem top and bottom is also the same
+   interval on a phone as on a desktop, which is why the pages read as padded rather
+   than paced. This scales with the viewport and gives back roughly 64px a band. */
+.band{padding:clamp(3.25rem,6vw,5rem) 0}
+.band--tight{padding:clamp(2.25rem,4vw,3.5rem) 0}
+.band--tall{padding:clamp(5rem,9vw,9rem) 0}
 .band--linen{background:var(--jkd-linen)}
 .band--white{background:var(--jkd-white)}
 .band--dark{background:var(--ground-dark);color:#F1EFED}
@@ -378,6 +382,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .areas li:last-child::after{display:none}
 .areas a,.areas span{font-size:var(--t-small);letter-spacing:var(--track-soft);color:var(--ink-soft)}
 .areas a:hover{color:var(--jkd-steel-blue)}
+/* The neighbourhood list in an alternating prose row runs as a column beside the text
+   rather than a centred ribbon, so it reads as a list of places and not a tag cloud. */
+.areas--compact{flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px 0}
+.areas--compact li::after{display:none}
+.areas--compact span{font-size:var(--t-small);color:var(--ink)}
+.areas--compact li{position:relative;padding-left:16px}
+.areas--compact li::before{content:"";position:absolute;left:0;top:.62em;width:4px;height:4px;
+  background:var(--jkd-gold);transform:rotate(45deg)}
+
+/* Breadcrumbs were six repeated inline styles per page. One class instead. */
+.crumb{margin-bottom:var(--gap-md);font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink-muted)}
 
 /* ---------------------------------------------------------------- faq --- */
 .faq{border-top:1px solid var(--rule);max-width:var(--measure);margin-inline:auto}
@@ -619,10 +635,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .reveal[data-seen="true"]{opacity:1;transform:none}
 
 /* The two halves of an editorial band come in from opposite sides and meet. This is
-   the move Jennifer's current site uses and the one that reads as motion. */
-.reveal .editorial__media{opacity:0;transform:translate3d(-44px,0,0);
+   the move Jennifer's current site uses and the one that reads as motion.
+   The direction is a variable set on .editorial rather than baked into these rules,
+   so a flipped row slides the other way without a second copy of the motion, and
+   .reveal can sit either on the row itself or on a section wrapping it. */
+.reveal .editorial__media{opacity:0;transform:translate3d(var(--from-media,-44px),0,0);
   transition:opacity 1200ms var(--ease-rise) 80ms,transform 1200ms var(--ease-rise) 80ms}
-.reveal .editorial__body{opacity:0;transform:translate3d(36px,0,0);
+.reveal .editorial__body{opacity:0;transform:translate3d(var(--from-body,36px),0,0);
   transition:opacity 1200ms var(--ease-rise) 220ms,transform 1200ms var(--ease-rise) 220ms}
 .reveal[data-seen="true"] .editorial__media,
 .reveal[data-seen="true"] .editorial__body{opacity:1;transform:none}
@@ -651,7 +670,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .proj-hero__media img{transform:translate3d(0,var(--drift,0px),0) scale(1.06)}
 
 @media (prefers-reduced-motion:reduce){
-  .reveal,.reveal .editorial__media,.reveal .editorial__body,
+  .reveal,.reveal .editorial__media,.reveal .editorial__body,.reveal .editorial__aside,
   .reveal .gallery__pair > figure,.reveal .pcard,.reveal .authority__item,.reveal .person{
     opacity:1;transform:none;transition:none}
   .proj-hero__media img{transform:none}
@@ -698,7 +717,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
    sizes attribute can actually state. */
 .editorial__media{position:relative;min-height:clamp(420px,64vh,760px)}
 @media (min-width:881px){
-  .editorial__media{align-self:start;height:clamp(420px,64vh,760px);min-height:0}
+  /* Capping this at 64vh kept the slot a shape `sizes` could state, but copy length
+     sets the row height and the body runs 844 to 1305px, so the photograph stopped
+     short and left 268 to 729px of dead band under it on every editorial hero.
+     It stretches again. What makes that safe this time is that the sizes attribute
+     now describes the full height the row can reach rather than the old 760px cap,
+     so a stretched slot is still asking for enough pixels to cover it. */
+  .editorial__media{align-self:stretch;height:auto;min-height:clamp(420px,64vh,760px)}
 }
 .editorial__media img{width:100%;height:100%;object-fit:cover}
 .editorial__body{display:flex;flex-direction:column;justify-content:center;
@@ -707,6 +732,50 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 /* The cover story runs a portrait photograph, so its photo column narrows. */
 .editorial--portrait{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
 .editorial--portrait .editorial__media{min-height:clamp(460px,80vh,900px)}
+
+/* Alternating rows. Flip reverses the columns and the motion with them, so a run of
+   sections reads left, right, left instead of one centred column all the way down.
+   order is used rather than direction:rtl so the DOM order stays the reading order
+   and the photograph is still announced after the text it belongs to. */
+.editorial{--from-media:-44px;--from-body:36px}
+.editorial--flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  --from-media:44px;--from-body:-36px}
+/* A photo row and a prose row put their columns in the DOM in opposite orders — the
+   photo leads its row, the text leads its own — so the flip is scoped to each rather
+   than one rule trying to serve both. */
+.editorial--flip:not(.editorial--prose) .editorial__media{order:2}
+.editorial--flip:not(.editorial--prose) .editorial__body{order:1}
+.editorial--flip.editorial--portrait{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+
+/* A prose row has no photograph, so its second column carries a pull-quote or a short
+   fact list instead of being left empty. Narrower than a photo column: the point is to
+   counterweight the text, not to compete with it. */
+.editorial--prose{grid-template-columns:minmax(0,7fr) minmax(0,4fr);align-items:center}
+.editorial--prose.editorial--flip{grid-template-columns:minmax(0,4fr) minmax(0,7fr)}
+.editorial--prose.editorial--flip .editorial__aside{order:1}
+.editorial--prose.editorial--flip .editorial__body{order:2}
+.editorial__aside{padding:clamp(32px,4vw,64px) clamp(24px,4vw,56px);align-self:center}
+.editorial__aside .figure-mark{margin-bottom:var(--gap-xs)}
+.editorial__aside dl{margin:0;display:grid;gap:var(--gap-sm)}
+.editorial__aside dt{font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink-muted);margin-bottom:2px}
+.editorial__aside dd{margin:0;font-family:var(--display);font-size:1.15rem;line-height:1.3}
+.editorial__aside blockquote{margin:0;font-family:var(--display);font-weight:300;
+  font-size:clamp(1.25rem,1.9vw,1.75rem);line-height:1.3;border-left:2px solid var(--jkd-gold);
+  padding-left:clamp(16px,2vw,24px)}
+.editorial__aside blockquote cite{display:block;margin-top:var(--gap-sm);font-style:normal;
+  font-family:var(--sans);font-size:var(--t-label);letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--ink-muted)}
+/* The aside is the media cell for motion purposes, so it slides with the same rule. */
+.reveal .editorial__aside{opacity:0;transform:translate3d(var(--from-media,-44px),0,0);
+  transition:opacity 1200ms var(--ease-rise) 80ms,transform 1200ms var(--ease-rise) 80ms}
+.reveal[data-seen="true"] .editorial__aside{opacity:1;transform:none}
+@media (max-width:880px){
+  .editorial--prose,.editorial--prose.editorial--flip{grid-template-columns:1fr}
+  .editorial--flip .editorial__media,.editorial--flip .editorial__body,
+  .editorial--prose.editorial--flip .editorial__aside{order:initial}
+  .editorial__aside{padding-top:0}
+}
 @media (max-width:880px){
   .editorial{grid-template-columns:1fr}
   .editorial__media{min-height:clamp(300px,52vh,480px)}
