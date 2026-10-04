@@ -223,6 +223,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .btn:hover{background:var(--jkd-deep-gray);color:#fff;border-color:var(--jkd-deep-gray)}
 .btn--light{border-color:rgba(255,255,255,.65);color:#fff}
 .btn--light:hover{background:#fff;color:var(--jkd-deep-gray);border-color:#fff}
+/* On a dark band the two actions are no longer equals: the form is the way in and the
+   phone number is the alternative, so it reads quieter. */
+.btn--ghost-light{border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.82)}
+.btn--ghost-light:hover{border-color:rgba(255,255,255,.65);color:#fff}
+
+/* The enquiry form is a HoneyBook iframe. It arrives at its own pace and can fail, so the
+   container holds its own height and the fallback underneath is visible until the iframe
+   is actually on the page. */
+.enquiry{margin-top:var(--gap-lg)}
+.enquiry__form{min-height:0}
+.enquiry__form[data-loading]{min-height:420px;position:relative}
+.enquiry__form[data-loading]::after{content:"Loading the form";position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:var(--t-label);letter-spacing:var(--track-mid);text-transform:uppercase;
+  color:var(--ink-muted);background:var(--jkd-linen)}
+.enquiry__form iframe{width:100%;border:0;display:block}
+.enquiry__fallback{margin-top:var(--gap-md);padding:16px 18px;border-left:2px solid var(--jkd-gold);
+  background:var(--jkd-linen);max-width:62ch}
+.enquiry__fallback p{font-size:var(--t-small);line-height:1.7}
+.enquiry__fallback .eyebrow{margin-bottom:6px}
+/* If the form never arrives, this stops being a footnote and starts being the instruction. */
+.enquiry__fallback[data-only-way] .eyebrow::after{content:" (it did not)"}
 .link-underline{display:inline-block;font-size:var(--t-label);letter-spacing:var(--track-wide);
   text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid currentColor;
   transition:color .2s,border-color .2s}
