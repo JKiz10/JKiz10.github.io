@@ -27,71 +27,397 @@
 
 <script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@graph":[
+ "@context": "https://schema.org",
+ "@graph": [
   {
-   "@type":"WebPage",
-   "@id":"https://jenniferkizzee.com/houston-interior-designer/#webpage",
-   "url":"https://jenniferkizzee.com/houston-interior-designer/",
-   "name":"Houston Interior Designer | Full-Service Residential Design",
-   "description":"Award-winning full-service interior design for Houston renovations and new construction.",
-   "isPartOf":{"@id":"https://jenniferkizzee.com/#website"},
-   "about":{"@id":"https://jenniferkizzee.com/#organization"},
-   "primaryImageOfPage":"https://jenniferkizzee.com/assets/img/projects/rockpoint-primary-bathroom-hero.jpg",
-   "inLanguage":"en-US"
+   "@type": "WebSite",
+   "@id": "https://jenniferkizzee.com/#website",
+   "url": "https://jenniferkizzee.com/",
+   "name": "Jennifer Kizzee Design",
+   "publisher": {
+    "@id": "https://jenniferkizzee.com/#organization"
+   },
+   "inLanguage": "en-US"
   },
   {
-   "@type":"BreadcrumbList",
-   "@id":"https://jenniferkizzee.com/houston-interior-designer/#breadcrumb",
-   "itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://jenniferkizzee.com/"},
-    {"@type":"ListItem","position":2,"name":"Houston Interior Designer","item":"https://jenniferkizzee.com/houston-interior-designer/"}
-   ]
-  },
-  {
-   "@type":"Service",
-   "@id":"https://jenniferkizzee.com/houston-interior-designer/#service",
-   "serviceType":"Residential Interior Design",
-   "name":"Full-Service Residential Interior Design in Houston",
-   "provider":{"@id":"https://jenniferkizzee.com/#organization"},
-   "areaServed":{"@type":"City","name":"Houston","containedInPlace":{"@type":"State","name":"Texas"}},
-   "hasOfferCatalog":{
-     "@type":"OfferCatalog",
-     "name":"Interior design services",
-     "itemListElement":[
-       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Whole-home renovation interior design"}},
-       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Major renovation interior design"}},
-       {"@type":"Offer","itemOffered":{"@type":"Service","name":"New construction and custom home interiors"}},
-       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Kitchen and bathroom design"}},
-       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Furnishings and procurement"}}
-     ]
+   "@type": "Person",
+   "@id": "https://jenniferkizzee.com/#jennifer-kizzee",
+   "name": "Jennifer Kizzee",
+   "givenName": "Jennifer",
+   "familyName": "Kizzee",
+   "jobTitle": "Founder and Principal Designer",
+   "worksFor": {
+    "@id": "https://jenniferkizzee.com/#organization"
+   },
+   "url": "https://jenniferkizzee.com/jennifer-kizzee/",
+   "image": "https://jenniferkizzee.com/assets/img/team/jennifer-kizzee-founder-principal-designer.jpg",
+   "sameAs": [
+    "https://www.linkedin.com/in/jennifer-kizzee-4b813a63/"
+   ],
+   "knowsAbout": [
+    "Residential interior design",
+    "Whole-home renovation",
+    "New construction interiors",
+    "Kitchen and bath design",
+    "Furnishings procurement"
+   ],
+   "workLocation": {
+    "@type": "Place",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "2116 Sedona Dr",
+     "addressLocality": "League City",
+     "addressRegion": "TX",
+     "postalCode": "77573",
+     "addressCountry": "US"
+    }
    }
   },
   {
-   "@type":"FAQPage",
-   "@id":"https://jenniferkizzee.com/houston-interior-designer/#faq",
-   "mainEntity":[
-    {"@type":"Question","name":"What does a full-service interior designer actually do?",
-     "acceptedAnswer":{"@type":"Answer","text":"Full service means we carry the project from the first measurement to the day the last piece is placed. That covers space planning and drawings, every finish and fixture selection, the bid package your contractor prices from, ordering and tracking all the furniture and materials, and managing the install. You are not sourcing tile on a Saturday or chasing a backordered vanity. You approve the design and we run it."}},
-    {"@type":"Question","name":"Do you work in Houston if your studio is in League City?",
-     "acceptedAnswer":{"@type":"Answer","text":"Yes. Most of our work is inside the Houston metro. The studio sits in League City because that is where Jennifer lives, but our projects run from the Museum District and the Heights out through The Woodlands, Pearland, Friendswood, Clear Lake and the Galveston corridor."}},
-    {"@type":"Question","name":"How early should I bring in an interior designer on a new construction home?",
-     "acceptedAnswer":{"@type":"Answer","text":"Before the slab if you can, and no later than framing. The decisions that matter most are structural: where the windows land, how the kitchen is laid out, whether the primary bath has room for the layout you want. Those get locked in early and get expensive to change later. We regularly sit down with builders during plan review."}},
-    {"@type":"Question","name":"Do you take on kitchen or bathroom projects on their own?",
-     "acceptedAnswer":{"@type":"Answer","text":"Yes, and a lot of our best-known work is exactly that. A single kitchen or a primary bath taken down to the studs is a real project with real drawings, real selections and real construction coordination. It gets the same process a whole home gets."}},
-    {"@type":"Question","name":"What is the first step in working together?",
-     "acceptedAnswer":{"@type":"Answer","text":"A paid design consultation. We come to the house, walk the space, and talk through scope, timeline and budget honestly. You leave that meeting with a clear read on what your project involves whether or not you hire us. If it is a fit, we build a proposal from what we learned."}},
-    {"@type":"Question","name":"Do you work with our builder or contractor?",
-     "acceptedAnswer":{"@type":"Answer","text":"We do, and we prefer it. We produce a bid package your builder can price accurately, we sit in on site meetings, and we handle the questions that come up mid-construction so your builder is not guessing at a finish detail. We also work regularly with builders who bring us in on their own projects."}},
-    {"@type":"Question","name":"Do you handle furniture and accessories, or only the construction side?",
-     "acceptedAnswer":{"@type":"Answer","text":"Both. Furnishings and procurement are part of full service. We specify the pieces, place and track the orders, receive and inspect them, and install everything at once so the room is finished the day you see it rather than arriving in boxes over four months."}},
-    {"@type":"Question","name":"What kind of projects are the best fit?",
-     "acceptedAnswer":{"@type":"Answer","text":"Large-scale residential work. Whole-home renovations, major gut projects, and new construction interiors where we are involved from the plans forward. We onboard selectively because full service means real hours on every project, and we would rather give more time to fewer clients."}},
-    {"@type":"Question","name":"How long does a Houston renovation take?",
-     "acceptedAnswer":{"@type":"Answer","text":"Design usually runs two to four months before anything is demolished, depending on scope and how quickly selections get approved. Construction is set by your builder and by permitting. A single kitchen or bath is often three to five months end to end. A whole home is commonly nine to eighteen months. Lead times on custom pieces drive more of that schedule than people expect, which is why we specify early."}},
-    {"@type":"Question","name":"Are you actually award-winning, or is that just a phrase?",
-     "acceptedAnswer":{"@type":"Answer","text":"Fifteen Best of Houzz awards across Design and Service, every year from 2018 through 2026. Jennifer and the firm have been featured by Business of Home, Houzz Magazine, Metropolitan Builder and Tile Club, and the studio was on the cover of Cambria Style in Spring 2025. Every one of those is listed with its year and its source on our Recognition page."}}
+   "@type": "WebPage",
+   "@id": "https://jenniferkizzee.com/houston-interior-designer/#webpage",
+   "url": "https://jenniferkizzee.com/houston-interior-designer/",
+   "name": "Houston Interior Designer | Full-Service Residential Design",
+   "description": "Award-winning full-service interior design for Houston renovations and new construction.",
+   "isPartOf": {
+    "@id": "https://jenniferkizzee.com/#website"
+   },
+   "about": {
+    "@id": "https://jenniferkizzee.com/#organization"
+   },
+   "primaryImageOfPage": "https://jenniferkizzee.com/assets/img/projects/rockpoint-primary-bathroom-hero.jpg",
+   "inLanguage": "en-US"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://jenniferkizzee.com/houston-interior-designer/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://jenniferkizzee.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Houston Interior Designer",
+     "item": "https://jenniferkizzee.com/houston-interior-designer/"
+    }
    ]
+  },
+  {
+   "@type": "Service",
+   "@id": "https://jenniferkizzee.com/houston-interior-designer/#service",
+   "serviceType": "Residential Interior Design",
+   "name": "Full-Service Residential Interior Design in Houston",
+   "provider": {
+    "@id": "https://jenniferkizzee.com/#organization"
+   },
+   "areaServed": {
+    "@type": "City",
+    "name": "Houston",
+    "containedInPlace": {
+     "@type": "State",
+     "name": "Texas"
+    }
+   },
+   "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Interior design services",
+    "itemListElement": [
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Whole-home renovation interior design"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Major renovation interior design"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "New construction and custom home interiors"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Kitchen and bathroom design"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Furnishings and procurement"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://jenniferkizzee.com/houston-interior-designer/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What does a full-service interior designer actually do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Full service means we carry the project from the first measurement to the day the last piece is placed. That covers space planning and drawings, every finish and fixture selection, the bid package your contractor prices from, ordering and tracking all the furniture and materials, and managing the install. You are not sourcing tile on a Saturday or chasing a backordered vanity. You approve the design and we run it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you work in Houston if your studio is in League City?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Most of our work is inside the Houston metro. The studio sits in League City because that is where Jennifer lives, but our projects run from the Museum District and the Heights out through The Woodlands, Pearland, Friendswood, Clear Lake and the Galveston corridor."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How early should I bring in an interior designer on a new construction home?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Before the slab if you can, and no later than framing. The decisions that matter most are structural: where the windows land, how the kitchen is laid out, whether the primary bath has room for the layout you want. Those get locked in early and get expensive to change later. We regularly sit down with builders during plan review."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you take on kitchen or bathroom projects on their own?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, and a lot of our best-known work is exactly that. A single kitchen or a primary bath taken down to the studs is a real project with real drawings, real selections and real construction coordination. It gets the same process a whole home gets."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the first step in working together?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A paid design consultation. We come to the house, walk the space, and talk through scope, timeline and budget honestly. You leave that meeting with a clear read on what your project involves whether or not you hire us. If it is a fit, we build a proposal from what we learned."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you work with our builder or contractor?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We do, and we prefer it. We produce a bid package your builder can price accurately, we sit in on site meetings, and we handle the questions that come up mid-construction so your builder is not guessing at a finish detail. We also work regularly with builders who bring us in on their own projects."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you handle furniture and accessories, or only the construction side?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Both. Furnishings and procurement are part of full service. We specify the pieces, place and track the orders, receive and inspect them, and install everything at once so the room is finished the day you see it rather than arriving in boxes over four months."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What kind of projects are the best fit?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Large-scale residential work. Whole-home renovations, major gut projects, and new construction interiors where we are involved from the plans forward. We onboard selectively because full service means real hours on every project, and we would rather give more time to fewer clients."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How long does a Houston renovation take?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Design usually runs two to four months before anything is demolished, depending on scope and how quickly selections get approved. Construction is set by your builder and by permitting. A single kitchen or bath is often three to five months end to end. A whole home is commonly nine to eighteen months. Lead times on custom pieces drive more of that schedule than people expect, which is why we specify early."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Are you actually award-winning, or is that just a phrase?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Fifteen Best of Houzz awards across Design and Service, every year from 2018 through 2026. Jennifer and the firm have been featured by Business of Home, Houzz Magazine, Metropolitan Builder and Tile Club, and the studio was on the cover of Cambria Style in Spring 2025. Every one of those is listed with its year and its source on our Recognition page."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://jenniferkizzee.com/#organization",
+   "name": "Jennifer Kizzee Design",
+   "alternateName": "JKD",
+   "url": "https://jenniferkizzee.com/",
+   "logo": "https://jenniferkizzee.com/assets/brand/jennifer-kizzee-primary-deep-gray.svg",
+   "image": "https://jenniferkizzee.com/assets/img/projects/vue-point-living-room-fireplace-hero.jpg",
+   "slogan": "Fresh Spaces. Inspiring Designs. Everyday Living.",
+   "description": "Full-service residential interior design firm serving Houston and Greater Houston. Specializing in large-scale renovations, whole-home projects and new construction interiors.",
+   "foundingDate": "2016",
+   "founder": {
+    "@id": "https://jenniferkizzee.com/#jennifer-kizzee"
+   },
+   "telephone": "+1-832-304-7134",
+   "email": "info@jenniferkizzee.com",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2116 Sedona Dr",
+    "addressLocality": "League City",
+    "addressRegion": "TX",
+    "postalCode": "77573",
+    "addressCountry": "US"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Houston"
+    },
+    {
+     "@type": "City",
+     "name": "League City"
+    },
+    {
+     "@type": "City",
+     "name": "Friendswood"
+    },
+    {
+     "@type": "City",
+     "name": "Pearland"
+    },
+    {
+     "@type": "City",
+     "name": "Pasadena"
+    },
+    {
+     "@type": "City",
+     "name": "Texas City"
+    },
+    {
+     "@type": "City",
+     "name": "Alvin"
+    },
+    {
+     "@type": "City",
+     "name": "Dickinson"
+    },
+    {
+     "@type": "City",
+     "name": "La Marque"
+    },
+    {
+     "@type": "City",
+     "name": "Seabrook"
+    },
+    {
+     "@type": "City",
+     "name": "Santa Fe"
+    },
+    {
+     "@type": "City",
+     "name": "Webster"
+    },
+    {
+     "@type": "City",
+     "name": "Bacliff"
+    },
+    {
+     "@type": "City",
+     "name": "Nassau Bay"
+    },
+    {
+     "@type": "City",
+     "name": "San Leon"
+    },
+    {
+     "@type": "City",
+     "name": "Kemah"
+    },
+    {
+     "@type": "City",
+     "name": "Clear Lake Shores"
+    },
+    {
+     "@type": "City",
+     "name": "Galveston"
+    },
+    {
+     "@type": "City",
+     "name": "The Woodlands"
+    },
+    {
+     "@type": "City",
+     "name": "Katy"
+    },
+    {
+     "@type": "City",
+     "name": "Mont Belvieu"
+    },
+    {
+     "@type": "City",
+     "name": "Crystal Beach"
+    },
+    {
+     "@type": "City",
+     "name": "Houston Heights"
+    },
+    {
+     "@type": "City",
+     "name": "Bolivar Peninsula"
+    },
+    {
+     "@type": "City",
+     "name": "Hitchcock"
+    },
+    {
+     "@type": "City",
+     "name": "Sugar Land"
+    },
+    {
+     "@type": "City",
+     "name": "Fulshear"
+    },
+    {
+     "@type": "City",
+     "name": "Richmond"
+    },
+    {
+     "@type": "City",
+     "name": "Spring"
+    },
+    {
+     "@type": "City",
+     "name": "Tomball"
+    },
+    {
+     "@type": "City",
+     "name": "Magnolia"
+    },
+    {
+     "@type": "City",
+     "name": "Conroe"
+    }
+   ],
+   "sameAs": [
+    "https://www.houzz.com/professionals/interior-designers-and-decorators/jennifer-kizzee-design-pfvwus-pf~344631941",
+    "https://www.instagram.com/jenniferkizzeedesign/",
+    "https://www.facebook.com/jenniferkizzeedesign/",
+    "https://www.pinterest.com/jenniferkizzeedesign/",
+    "https://www.tiktok.com/@jenniferkizzeedesign",
+    "https://www.linkedin.com/company/jennifer-kizzee-design"
+   ],
+   "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 29.475437,
+    "longitude": -95.121258
+   },
+   "priceRange": "$175-$300 per hour"
   }
  ]
 }
@@ -103,7 +429,6 @@
 
 <div class="announce">
   <span><span class="announce__lead">Now booking Houston renovations and new builds. </span><a href="/contact/" data-cta="announce">Schedule a consult with a designer</a></span>
-  <a class="announce__phone" href="tel:+18323047134" data-cta="announce-phone">832-304-7134</a>
 </div>
 
 <header class="masthead">
