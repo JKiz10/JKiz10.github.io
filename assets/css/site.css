@@ -213,7 +213,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 
 @media (max-width:1240px){
   .nav-toggle{display:block}
-  .nav{position:absolute;top:100%;left:calc(-1 * clamp(20px,5vw,56px));right:calc(-1 * clamp(20px,5vw,56px));
+  /* The containing block is .wrap, whose border box already starts at the window edge,
+     so pulling the panel out by a gutter put it at -20px and the padding only brought
+     the links back to 0 — flush against the left wall. left/right 0 makes the panel
+     full bleed on its own, and the padding then lands the links under the logo. */
+  .nav{position:absolute;top:100%;left:0;right:0;
     flex-direction:column;align-items:stretch;gap:0;background:var(--jkd-linen);
     border-bottom:1px solid var(--rule);padding:var(--gap-xs) clamp(20px,5vw,56px) var(--gap-md);display:none;
     max-height:calc(100vh - 78px);max-height:calc(100dvh - 78px);overflow-y:auto;overscroll-behavior:contain}
