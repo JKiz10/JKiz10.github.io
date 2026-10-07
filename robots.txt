@@ -46,3 +46,6 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://jenniferkizzee.com/sitemap.xml
+
+# A plain-text summary of this studio for AI assistants.
+# https://jenniferkizzee.com/llms.txt
