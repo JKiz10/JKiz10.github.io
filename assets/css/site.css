@@ -345,7 +345,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
 .feature__media img,.feature__media .photo-slot{height:100%;width:100%;object-fit:cover;aspect-ratio:3/4}
 @media (max-width:880px){
   .feature{grid-template-columns:1fr}
+  /* 4/3 on a phone so a tall photograph does not push the heading off the screen. */
   .feature__media img,.feature__media .photo-slot{aspect-ratio:4/3}
+  /* A standing portrait is the exception: 4/3 cuts the subject off at the hips and
+     throws away the reason the photograph was taken. 4/5 keeps the person whole and
+     still leaves the heading visible. Opt in, because the same component also carries
+     landscape room photographs that 4/5 would crop badly. */
+  .feature__media--portrait img{aspect-ratio:4/5}
 }
 
 /* --------------------------------------------------------- quotation --- */
