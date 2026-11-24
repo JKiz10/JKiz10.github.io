@@ -352,6 +352,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.reel__track:focus-vi
      still leaves the heading visible. Opt in, because the same component also carries
      landscape room photographs that 4/5 would crop badly. */
   .feature__media--portrait img{aspect-ratio:4/5}
+  /* Jennifer asked for her name above her photograph on a phone. The heading sits
+     inside the text column, so order alone cannot lift it past the image: display:contents
+     drops that column out of the box tree and promotes its two halves to grid items, which
+     order can then interleave. Desktop is untouched, where the two-column layout already
+     puts the heading beside the photograph. */
+  .feature--lede-first .feature__text{display:contents}
+  .feature--lede-first .feature__lede{order:1}
+  .feature--lede-first .feature__media{order:2}
+  .feature--lede-first .feature__body{order:3}
 }
 
 /* --------------------------------------------------------- quotation --- */
